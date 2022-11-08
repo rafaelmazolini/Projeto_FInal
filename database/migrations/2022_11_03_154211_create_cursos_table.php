@@ -13,16 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('alunos', function (Blueprint $table) {
+        Schema::create('cursos', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
-            $table->bigInteger('cpf');
-            $table->integer('cep') -> nullable();
-            $table->string('endereco');
-            $table->string('filme');
-            $table->string('usuario');
-            $table->string('senha');
-            //Data e hora
+            $table->text('descricao_completa');
+            $table->text('descricao_simplificada');
+            $table->integer('min_alunos');
+            $table->integer('max_alunos');
+            $table->string('status');
+            //Imagem
+            $table->integer('cpf_professor') -> nullable();
             $table->timestamps();
         });
     }
@@ -34,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('alunos');
+        Schema::dropIfExists('cursos');
     }
 };

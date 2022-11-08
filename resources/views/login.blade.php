@@ -18,7 +18,7 @@
     <input type="text" name="usuario">
     
     <label for="senha">Senha</label>
-    <input type="text" name="senha">
+    <input type="password" name="senha">
     </div>
     
     <button>Login</button>

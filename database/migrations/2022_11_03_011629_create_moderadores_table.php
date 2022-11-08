@@ -13,13 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('alunos', function (Blueprint $table) {
+        Schema::create('moderadores', function (Blueprint $table) {
             $table->id();
-            $table->string('nome');
-            $table->bigInteger('cpf');
-            $table->integer('cep') -> nullable();
-            $table->string('endereco');
-            $table->string('filme');
             $table->string('usuario');
             $table->string('senha');
             //Data e hora
@@ -34,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('alunos');
+        Schema::dropIfExists('moderadores');
     }
 };

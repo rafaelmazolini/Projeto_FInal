@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('usuario');
             $table->string('senha');
+            //Data e hora
             $table->timestamps();
         });
     }
