@@ -8,6 +8,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="resources/css/app.css">
 
         <!-- Styles -->
         <style>
@@ -72,6 +73,8 @@
                                 </div>
                             </div>
                         </div>
+                        
+                       
 
                         <div class="p-6 border-t border-gray-200 dark:border-gray-700">
                             <div class="flex items-center">
@@ -129,4 +132,6 @@
             </div>
         </div>
     </body>
+    
+    <h1 class="oi-mat">OI MAT</h1>
 </html>
