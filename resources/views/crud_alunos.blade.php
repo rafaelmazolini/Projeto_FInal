@@ -68,7 +68,9 @@
   
 </head>
 <body>
-
+<form action="{{ route('pagina-login') }}" method="get">
+  <button>Menu</button>
+</form>
 <h1>Alunos</h1>
 
 <form action="{{ route('cria-aluno') }}" method="post">
