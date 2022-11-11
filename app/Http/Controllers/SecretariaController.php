@@ -22,7 +22,7 @@ class SecretariaController extends Controller
             'nome' => $request -> nome,
             'cpf' => $request -> cpf,
             'endereco' => $request -> endereco,
-            'usuario' => Hash::make($request -> usuario),
+            'usuario' => $request -> usuario,
             'senha' => Hash::make($request -> senha),
         ]);
         
@@ -40,7 +40,7 @@ class SecretariaController extends Controller
             'cpf' => $request -> cpf,
             'endereco' => $request -> endereco,
             'filme' => $request -> filme,
-            'usuario' => Hash::make($request -> usuario),
+            'usuario' => $request -> usuario,
             'senha' => Hash::make($request -> senha),
         ]);
         

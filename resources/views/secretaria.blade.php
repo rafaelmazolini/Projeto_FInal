@@ -11,7 +11,7 @@
   
   <h1>Secretaria</h1>
   
-  <form action="{{ route('crud-professores') }}" method="post">
+  <form action="{{ route('crud-professores') }}" method="get">
     
     {{ csrf_field()}}
   
@@ -19,7 +19,7 @@
     
   </form>
   
-  <form action="{{ route('crud-alunos') }}" method="post">
+  <form action="{{ route('crud-alunos') }}" method="get">
   
     {{ csrf_field() }}
     
@@ -27,7 +27,7 @@
     
   </form>
   
-  <form action="{{ route('crud-cursos') }}" method="post">
+  <form action="{{ route('crud-cursos') }}" method="get">
   
     {{ csrf_field() }}
     

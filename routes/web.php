@@ -21,7 +21,7 @@ Route::post('/login', [LoginController::class, 'login']) -> name('login');
 Route::get('/secretaria', [SecretariaController::class, 'index']) -> name('pagina-secretaria');
 Route::get('/moderador', [ModeradorController::class, 'index']) -> name('pagina-moderador');
 Route::get('/professor', [ProfessorController::class, 'index']) -> name('pagina-professor');
-Route::get('/aluno', [AlunoController::class, 'index']) -> name('pagina-aluno');
+Route::get('/aluno/{aluno}', [AlunoController::class, 'index']) -> name('pagina-aluno');
 
 //Cadastro
 Route::post('/cria-aluno', [SecretariaController::class, 'criaAluno']) -> name('cria-aluno');

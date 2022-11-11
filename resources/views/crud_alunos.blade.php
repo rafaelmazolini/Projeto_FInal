@@ -108,6 +108,11 @@
 @foreach($alunos as $aluno)
 
   <h3>- {{ $aluno -> nome }}</h3>
+  <p> {{$aluno -> cpf}} </p>
+  <p> {{$aluno -> endereco}} </p>
+  <p> {{$aluno -> filme}} </p>
+  <p> {{$aluno -> usuario}} </p>
+  <p> {{$aluno -> senha}} </p>
 
 @endforeach  
   
