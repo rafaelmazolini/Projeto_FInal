@@ -18,6 +18,29 @@ class SecretariaController extends Controller
     
     //Cadastro de professor
     public function criaProfessor(Request $request){
+        
+        //Valida o CPF e o usuário
+        foreach(Professor::all() as $professor){
+            if($request -> cpf == $professor -> cpf){
+                return "Erro: professor já cadastrado.";
+            }
+            
+            if($request -> usuario == $professor -> usuario){
+                return "Erro: usuário já existe.";
+            }
+        }
+        
+        foreach(Aluno::all() as $aluno){
+            if($request -> usuario == $aluno -> usuario){
+                return "Erro: usuário já existe.";
+            }
+        }
+        
+        if($request -> usuario == ('secretaria' || 'moderador')){
+            return "Erro: usuário já exite.";
+        }
+        
+        //Cria o novo professor
         Professor::create([
             'nome' => $request -> nome,
             'cpf' => $request -> cpf,
@@ -26,6 +49,7 @@ class SecretariaController extends Controller
             'senha' => Hash::make($request -> senha),
         ]);
         
+        //Retorna para a mesma página
         return redirect() -> route('crud-professores');
     }
     
@@ -35,6 +59,29 @@ class SecretariaController extends Controller
     
     //Cadastro de Aluno
     public function criaAluno(Request $request){
+        
+        //Valida o CPF e o usuário
+        foreach(Aluno::all() as $aluno){
+            if($request -> cpf == $aluno -> cpf){
+                return "Aluno já cadastrado.";
+            }
+            
+            if($request -> usuario == $aluno -> usuario){
+                return "Erro: usuário já existe.";
+            }
+        }
+        
+        foreach(Professor::all() as $professor){
+            if ($request -> usuario == $professor -> usuario){
+                return "Erro: usuário já existe.";
+            }
+        }
+        
+        if($request -> usuario == ('secretaria' || 'moderador')){
+            return "Erro: usuário já exite.";
+        }
+        
+        //Cria o aluno
         Aluno::create([
             'nome' => $request -> nome,
             'cpf' => $request -> cpf,
@@ -44,6 +91,7 @@ class SecretariaController extends Controller
             'senha' => Hash::make($request -> senha),
         ]);
         
+        //Retorna para a mesma página
         return redirect() -> route('crud-alunos');
     }
     
@@ -52,6 +100,7 @@ class SecretariaController extends Controller
     }
     
     public function criaCurso(Request $request){
+        //Cria o curso
         Curso::create([
             'nome' => $request -> nome,
             'descricao_completa' => $request -> descricao_completa,
@@ -61,6 +110,7 @@ class SecretariaController extends Controller
             'status' => 'Matrículas Abertas - Mínimo de alunos não atingido!'
         ]);
         
+        //Retorna para a mesma página
         return redirect() -> route('crud-cursos');
     }
     

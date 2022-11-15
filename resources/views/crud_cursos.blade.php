@@ -36,6 +36,8 @@
   </div>
   
 </form>
+
+@foreach
   
 </body>
 </html>
