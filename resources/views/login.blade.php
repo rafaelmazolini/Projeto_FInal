@@ -7,6 +7,10 @@
   <title>Raspadinha Cursos</title>
 </head>
 <body>
+
+  <form action="{{ route('pagina-inicio') }}" method="get">
+    <button>Menu</button>
+  </form>
   
   <h1>Login</h1>
   
