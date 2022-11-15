@@ -9,6 +9,10 @@
 </head>
 <body>
 
+  <form action="{{ route('pagina-inicio') }}" method="get">
+    <button>Menu</button>
+  </form>
+
   @if($alteraAux == 0)
   
     <h1>{{ $aluno -> nome }}</h1>

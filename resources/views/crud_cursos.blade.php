@@ -8,6 +8,10 @@
 </head>
 <body>
 
+  <form action="{{ route('pagina-inicio') }}" method="get">
+    <button>Menu</button>
+  </form>
+
 <h1>Cursos</h1>
   
 <form action="{{ route('cria-curso') }}" method="post">

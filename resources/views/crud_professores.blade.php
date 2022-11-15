@@ -68,6 +68,10 @@
   
 </head>
 <body>
+
+  <form action="{{ route('pagina-inicio') }}" method="get">
+    <button>Menu</button>
+  </form>
   
   <h1>Professores</h1>
   
