@@ -8,7 +8,7 @@
 </head>
 <body>
   
-  <h1>Professor</h1>
+  <h1>{{ $professor -> nome }}</h1>
   
 </body>
 </html>

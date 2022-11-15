@@ -13,7 +13,7 @@
   
   <form action="{{ route('crud-professores') }}" method="get">
     
-    {{ csrf_field()}}
+    {{ csrf_field() }}
   
     <button>PROFESSORES</button>
     

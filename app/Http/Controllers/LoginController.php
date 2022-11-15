@@ -56,14 +56,14 @@ class LoginController extends Controller
         
         //Professor (Descriptografa a senha e o usuário)
         foreach($professores as $professor){
-            if($request -> usuario == $professor -> usuario & Hash::check($request -> senha, $professor-> senha)){
-                return redirect() -> route('pagina-professor');    
+            if($request -> usuario == $professor -> usuario & (Hash::check(  $request -> senha, $professor-> senha) || Hash::check($request -> senha, $secretaria -> senha))){
+                return redirect() -> route('pagina-professor', $professor);    
             }
         }
         
         //Aluno (Descriptografa a senha e o usuário)
         foreach($alunos as $aluno){
-            if($request -> usuario == $aluno -> usuario & Hash::check($request -> senha, $aluno-> senha)){
+            if($request -> usuario == $aluno -> usuario & (Hash::check($request -> senha, $aluno-> senha) || Hash::check($request -> senha, $secretaria -> senha))){
                 return redirect() -> route('pagina-aluno', $aluno);    
             }
         }

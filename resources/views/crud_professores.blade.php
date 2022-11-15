@@ -105,7 +105,11 @@
   
   @foreach($professores as $professor)
   
-    <h3>- {{ $professor -> nome }}</h3>
+    <form action="{{ route('pagina-professor', $professor) }}" method="get">
+    
+      <button>{{$professor -> nome}}</button>
+      
+    </form>
     
   @endforeach
   
