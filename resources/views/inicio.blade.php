@@ -14,5 +14,12 @@
     <button>Login</button>
   </form>
   
+  @foreach($cursos as $curso)
+    
+    <h3>{{$curso -> nome}}</h3>
+    <p>{{ $curso -> descricao_simplificada }}</p>
+  
+  @endforeach
+  
 </body>
 </html>
