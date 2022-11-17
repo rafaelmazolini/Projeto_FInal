@@ -24,8 +24,18 @@
     <h4>Informações de Login</h4>
     <p>Usuário: {{ $aluno -> usuario }}</p>
     
-    <form action="{{ route('altera-dados-botao', $aluno) }}" method="get">
+    <form action="{{ route('altera-dados-botao-A', $aluno) }}" method="get">
       <button>Editar Dados</button>
+    </form>
+    
+    <form action="{{ route('deleta-aluno', $aluno) }}" method="post">
+      {{ csrf_field() }}
+      <button>Excluir aluno</button>
+    </form>
+    
+    <form action="{{ route('troca-senha-botao-A', $aluno) }}" method="get">
+      {{ csrf_field() }}
+      <button>Trocar senha</button>
     </form>
   
   @endif
@@ -34,7 +44,7 @@
   
     <h1>{{ $aluno -> nome }}</h1>
     
-    <form action="{{ route('altera-dados', $aluno)}} " method="post">
+    <form action="{{ route('altera-dados-A', $aluno)}} " method="post">
     
       {{ csrf_field() }} 
       
@@ -55,6 +65,43 @@
       
       <button>Salvar</button>
     
+    </form>
+    
+    <form action="{{ route('deleta-aluno', $aluno) }}" method="post">
+      {{ csrf_field() }}
+      <button>Excluir aluno</button>
+    </form>
+  
+  @endif
+  
+  @if($alteraAux == 2)
+  
+  <h1>{{ $aluno -> nome }}</h1>
+    
+    <p>Nome: {{ $aluno -> nome }}</p>
+    <p>CPF: {{ $aluno -> cpf }}</p>
+    <p>Endereço: {{ $aluno -> endereço }}</p>
+    <p>Filme favorito: {{ $aluno -> filme }}</p>
+    <h4>Informações de Login</h4>
+    <p>Usuário: {{ $aluno -> usuario }}</p>
+    
+    <form action="{{ route('altera-dados-botao-A', $aluno) }}" method="get">
+      <button>Editar Dados</button>
+    </form>
+    
+    <form action="{{ route('deleta-aluno', $aluno) }}" method="post">
+      {{ csrf_field() }}
+      <button>Excluir aluno</button>
+    </form>
+    
+    <form action="{{ route('troca-senha-A', $aluno) }}" method="post">
+      {{ csrf_field() }}
+      
+      <label for="senha">Nova senha: </label>
+      <input type="password" name="senha">
+      
+      <button>Salvar</button>
+      
     </form>
   
   @endif
