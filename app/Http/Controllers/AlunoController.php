@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Aluno;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AlunoController extends Controller
 {   
@@ -32,6 +33,24 @@ class AlunoController extends Controller
         
         return $this -> index($aluno, 0);
         
+    }
+    
+    public function deletaAluno($aluno){
+        Aluno::destroy($aluno);
+        
+        return redirect() -> route('crud-alunos');
+    }
+    
+    public function trocaSenhaBotao($aluno){
+        return $this -> index($aluno, 2);
+    }
+    
+    public function trocaSenha($aluno, Request $request){
+        $alunoAux = Aluno::find($aluno);
+        $alunoAux -> senha = Hash::make($request -> senha);
+        $alunoAux -> save();
+        
+        return $this -> index($aluno, 0);
     }
 
 }

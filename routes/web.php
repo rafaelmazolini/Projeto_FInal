@@ -2,10 +2,12 @@
 
 use App\Http\Controllers\AlunoController;
 use App\Http\Controllers\ControleController;
+use App\Http\Controllers\CursoController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ModeradorController;
 use App\Http\Controllers\ProfessorController;
 use App\Http\Controllers\SecretariaController;
+use App\Models\Aluno;
 use Illuminate\Support\Facades\Route;
 
 //INCIO
@@ -20,6 +22,7 @@ Route::get('/secretaria', [SecretariaController::class, 'index']) -> name('pagin
 Route::get('/moderador', [ModeradorController::class, 'index']) -> name('pagina-moderador');
 Route::get('/professor/{professor}', [ProfessorController::class, 'index']) -> name('pagina-professor');
 Route::get('/aluno/{aluno}', [AlunoController::class, 'index']) -> name('pagina-aluno');
+Route::get('/pagina-curso/{curso}', [CursoController::class, 'index']) -> name('pagina-curso');
 
 //Cadastro
 Route::post('/cria-aluno', [SecretariaController::class, 'criaAluno']) -> name('cria-aluno');
@@ -27,8 +30,21 @@ Route::post('/cria-professor', [SecretariaController::class, 'criaProfessor']) -
 Route::post('/cria-secretaria', [SecretariaController::class, 'criaSecretaria']) -> name('cria-secretaria');
 Route::post('/cria-curso', [SecretariaController::class, 'criaCurso']) -> name('cria-curso');
 
-Route::get('/altera-dados-botao/{aluno}', [AlunoController::class, 'alteraDadosBotao']) -> name('altera-dados-botao');
-Route::post('/altera-dados/{aluno}', [AlunoController::class, 'alteraDados']) -> name('altera-dados');
+//Edição de Cadastro
+Route::get('/altera-dados-botao-A/{aluno}', [AlunoController::class, 'alteraDadosBotao']) -> name('altera-dados-botao-A');
+Route::post('/altera-dados-A/{aluno}', [AlunoController::class, 'alteraDados']) -> name('altera-dados-A');
+Route::get('/troca-senha-botao-A/{aluno}', [AlunoController::class, 'trocaSenhaBotao']) -> name('troca-senha-botao-A');
+Route::post('/troca-senha-A/{aluno}', [AlunoController::class, 'trocaSenha']) -> name('troca-senha-A');
+Route::get('/altera-dados-botao-P/{professor}', [ProfessorController::class, 'alteraDadosBotao']) -> name('altera-dados-botao-P');
+Route::post('/altera-dados-P/{professor}', [ProfessorController::class, 'alteraDados']) -> name('altera-dados-P');
+Route::get('/altera-dados-botao-C/{curso}', [CursoController::class, 'alteraDadosBotao']) -> name('altera-dados-botao-C');
+Route::post('/altera-dados-C/{curso}', [CursoController::class, 'alteraDados']) -> name('altera-dados-C');
+//FAZER A EDIÇÃO DOS CURSOS
+
+//Exclusão de Cadastro
+Route::post('/deleta-aluno/{aluno}', [AlunoController::class, 'deletaAluno']) -> name('deleta-aluno');
+Route::post('/deleta-professor/{professor}', [ProfessorController::class, 'deletaProfessor']) -> name('deleta-professor');
+Route::post('/deleta-curso/{curso}', [CursoController::class, 'deletaCurso']) -> name('deleta-curso');
 
 Route::get('/crud-professores', [SecretariaController::class, 'crudProfessores']) -> name('crud-professores');
 Route::get('/crud-alunos', [SecretariaController::class, 'crudAlunos']) -> name('crud-alunos');

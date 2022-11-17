@@ -21,22 +21,22 @@ class SecretariaController extends Controller
         
         //Valida o CPF e o usuário
         foreach(Professor::all() as $professor){
-            if($request -> cpf == $professor -> cpf){
+            if($request -> cpf === $professor -> cpf){
                 return "Erro: professor já cadastrado.";
             }
             
-            if($request -> usuario == $professor -> usuario){
+            if($request -> usuario === $professor -> usuario){
                 return "Erro: usuário já existe.";
             }
         }
         
         foreach(Aluno::all() as $aluno){
-            if($request -> usuario == $aluno -> usuario){
+            if($request -> usuario === $aluno -> usuario){
                 return "Erro: usuário já existe.";
             }
         }
         
-        if($request -> usuario == ('secretaria' || 'moderador')){
+        if($request -> usuario === ('secretaria' || 'moderador')){
             return "Erro: usuário já exite.";
         }
         
@@ -62,22 +62,22 @@ class SecretariaController extends Controller
         
         //Valida o CPF e o usuário
         foreach(Aluno::all() as $aluno){
-            if($request -> cpf == $aluno -> cpf){
+            if($request -> cpf === $aluno -> cpf){
                 return "Aluno já cadastrado.";
             }
             
-            if($request -> usuario == $aluno -> usuario){
+            if($request -> usuario === $aluno -> usuario){
                 return "Erro: usuário já existe.";
             }
         }
         
         foreach(Professor::all() as $professor){
-            if ($request -> usuario == $professor -> usuario){
+            if ($request -> usuario === $professor -> usuario){
                 return "Erro: usuário já existe.";
             }
         }
         
-        if($request -> usuario == ('secretaria' || 'moderador')){
+        if($request -> usuario === ('secretaria' || 'moderador')){
             return "Erro: usuário já exite.";
         }
         
@@ -107,6 +107,7 @@ class SecretariaController extends Controller
             'descricao_simplificada' => $request -> descricao_simplificada,
             'min_alunos' => $request -> min_alunos,
             'max_alunos' => $request -> max_alunos,
+            'n_alunos' => 0,
             'status' => 'Matrículas Abertas - Mínimo de alunos não atingido!'
         ]);
         
@@ -115,6 +116,6 @@ class SecretariaController extends Controller
     }
     
     public function crudCursos(){
-        return view('crud_cursos');
+        return view('crud_cursos', ['cursos' => Curso::all()]);
     }
 }
