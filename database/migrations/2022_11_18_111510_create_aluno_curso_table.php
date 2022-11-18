@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Aluno;
+use App\Models\Curso;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,15 +15,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('professores', function (Blueprint $table) {
+        Schema::create('aluno_curso', function (Blueprint $table) {
             $table->id();
-            $table->string('nome');
-            $table->bigInteger('cpf');
-            $table->string('endereco');
-            $table->string('usuario');
-            $table->string('senha');
-            //Data e hora
-            //Avatar
+            $table->foreignIdFor(Aluno::class) -> constrained;
+            $table->foreignIdFor(Curso::class) -> constrained;
             $table->timestamps();
         });
     }
@@ -33,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('professores');
+        Schema::dropIfExists('aluno_curso');
     }
 };
