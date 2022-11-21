@@ -4,7 +4,6 @@
 
 @section ('content')  
 
-  <img src="/img/logo.jpg"  width="200" left="200" alt="logo">
   <h1>Raspadinha Cursos</h1>
   
 

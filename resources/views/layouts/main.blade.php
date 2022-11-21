@@ -14,7 +14,7 @@
         
         <!-- CSS Bootstrap -->
 
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
         <!-- CSS da aplicação -->
         <link rel="stylesheet" href="/css/styles.css">
@@ -22,12 +22,32 @@
 
     </head>
     <body>
+        <header>
+            <nav class="navber navbar-expand-lg navbar-light">
+            <div class="collapse navbar-collapse" id="navbar"> 
+                <a href="/" class="navbar-brand">
+                    <img src="/img/logo.jpg" alt="Logo">
+                </a>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a href="{{ route('pagina-login') }}" class="nav-link">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('pagina-cadastro') }}" class="nav-link">Cadastro</a>
+                    </li>
+                </ul>
+            </div>
+            </nav>
+        </header>
+        
+     
+        <hr />
 
-    @yield('content')
+        @yield('content')
 
-    <footer>
-        <p>Raspadinha Cursos &copy; 2022</p>
-    </footer>
+        <footer>
+            <p>Raspadinha Cursos &copy; 2022</p>
+        </footer>
 
     </body>
 </html>
