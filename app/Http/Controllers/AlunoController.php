@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Aluno;
+use App\Models\Curso;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -11,7 +12,7 @@ class AlunoController extends Controller
     
     //Recebe o id de um aluno e retorna a sua view com "aluno" como variável na blade
     public function index($aluno, $alteraAux = 0){
-        return view('aluno', ['aluno' => Aluno::find($aluno), 'alteraAux' => $alteraAux]);
+        return view('aluno', ['aluno' => Aluno::find($aluno), 'alteraAux' => $alteraAux, 'cursos' => Curso::all()]);
     }
     
     //Retorna a pagina para a edição do aluno
