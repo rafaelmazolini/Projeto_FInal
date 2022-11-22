@@ -40,7 +40,6 @@ Route::get('/altera-dados-botao-P/{professor}', [ProfessorController::class, 'al
 Route::post('/altera-dados-P/{professor}', [ProfessorController::class, 'alteraDados']) -> name('altera-dados-P');
 Route::get('/altera-dados-botao-C/{curso}', [CursoController::class, 'alteraDadosBotao']) -> name('altera-dados-botao-C');
 Route::post('/altera-dados-C/{curso}', [CursoController::class, 'alteraDados']) -> name('altera-dados-C');
-//FAZER A EDIÇÃO DOS CURSOS
 
 //Exclusão de Cadastro
 Route::post('/deleta-aluno/{aluno}', [AlunoController::class, 'deletaAluno']) -> name('deleta-aluno');

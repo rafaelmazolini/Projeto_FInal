@@ -21,7 +21,7 @@
     
     <p>Nome: {{ $aluno -> nome }}</p>
     <p>CPF: {{ $aluno -> cpf }}</p>
-    <p>Endereço: {{ $aluno -> endereço }}</p>
+    <p>Endereço: {{ $aluno -> endereco }}</p>
     <p>Filme favorito: {{ $aluno -> filme }}</p>
     <h4>Informações de Login</h4>
     <p>Usuário: {{ $aluno -> usuario }}</p>
@@ -108,46 +108,44 @@
   
   @endif
   
-  @foreach($cursos as $curso)
+  <h2>Meus Cursos</h2>
   
-    @if(count($aluno -> cursos) > 0)
-    
-      Falta terminar
-      
-    @endif
-    
-    @if(count($aluno -> cursos) == 0)
-    
-    <div class="curso">
-        
-        <h2>{{ $curso -> nome }}</h2>
-        <p>{{ $curso -> descricao_simplificada }}</p>
-          
-        <form action="{{ route('matricula-aluno', [$aluno, $curso]) }}" method="get">
-          <button>Matricular-se</button>
-        </form>
-        
-      </div>
-    
-    @endif
+  @if(count($aluno -> cursos) == 0)
+    <p>Não está matriculado em nenhum curso.</p>
+  @endif
   
+  @foreach($aluno -> cursos as $matriculado)
+  
+    <p>{{ $matriculado -> nome }}</p>
   
   @endforeach
   
-  <div>
+  <h2>Cursos Disponíveis</h2>
+  
+  @foreach($cursos as $curso)
+  
+    @php($matriculadoAux = 0)
+  
+    @foreach($aluno -> cursos as $matriculado)
     
-    <h2>Meus Cursos</h2>
-    
-    @foreach($aluno -> cursos as $curso)
-    
-      <div>
-        <h2>{{ $curso -> nome }}</h2>
-        <p>{{ $curso -> descricao_simplificada }}</p>
-      </div>  
+      @if($curso -> id == $matriculado -> id)
+      
+        @php($matriculadoAux = 1)
+      
+      @endif
     
     @endforeach
     
-  </div>
+    @if($matriculadoAux == 0)
+    
+    <p>{{ $curso -> nome }}</p>
+      <form action="{{ route('matricula-aluno', [$aluno, $curso]) }}" method="get">
+        <button>Matricular-se</button>
+      </form>
+    
+    @endif
+  
+  @endforeach
   
 </body>
 </html>
