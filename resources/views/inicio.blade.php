@@ -1,14 +1,11 @@
 @extends('layouts.main')
 
-@section('title', 'Raspadinha Cursos - login')
+@section('title', 'Raspadinha Cursos')
 
 @section ('content')  
 
-  <h1>Raspadinha Cursos</h1>
-  
+<h1>Algum Titulo</h1>
 
-  <form action="{{ route('pagina-login') }}" method="get">
-    <button>Login</button>
-  </form>
-  
+
+
 @endsection

@@ -30,6 +30,9 @@
                 </a>
                 <ul class="navbar-nav">
                     <li class="nav-item">
+                        <a href="/" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
                         <a href="{{ route('pagina-login') }}" class="nav-link">Login</a>
                     </li>
                     <li class="nav-item">
@@ -40,7 +43,6 @@
             </nav>
         </header>
         
-     
         <hr />
 
         @yield('content')
@@ -48,6 +50,6 @@
         <footer>
             <p>Raspadinha Cursos &copy; 2022</p>
         </footer>
-
+        <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
     </body>
 </html>
