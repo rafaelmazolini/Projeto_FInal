@@ -3,14 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Aluno;
+use App\Models\Curso;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AlunoController extends Controller
 {   
     
     //Recebe o id de um aluno e retorna a sua view com "aluno" como variável na blade
     public function index($aluno, $alteraAux = 0){
-        return view('aluno', ['aluno' => Aluno::find($aluno), 'alteraAux' => $alteraAux]);
+        return view('aluno', ['aluno' => Aluno::find($aluno), 'alteraAux' => $alteraAux, 'cursos' => Curso::all()]);
     }
     
     //Retorna a pagina para a edição do aluno
@@ -32,6 +34,24 @@ class AlunoController extends Controller
         
         return $this -> index($aluno, 0);
         
+    }
+    
+    public function deletaAluno($aluno){
+        Aluno::destroy($aluno);
+        
+        return redirect() -> route('crud-alunos');
+    }
+    
+    public function trocaSenhaBotao($aluno){
+        return $this -> index($aluno, 2);
+    }
+    
+    public function trocaSenha($aluno, Request $request){
+        $alunoAux = Aluno::find($aluno);
+        $alunoAux -> senha = Hash::make($request -> senha);
+        $alunoAux -> save();
+        
+        return $this -> index($aluno, 0);
     }
 
 }

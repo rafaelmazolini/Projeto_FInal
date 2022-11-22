@@ -8,6 +8,10 @@
 </head>
 <body>
 
+  <form action="{{ route('pagina-inicio') }}" method="get">
+    <button>Menu</button>
+  </form>
+
 <h1>Cursos</h1>
   
 <form action="{{ route('cria-curso') }}" method="post">
@@ -26,10 +30,10 @@
     <label for="descricao_simplifica">Descrição Simplificada</label>
     <input type="text" name="descricao_simplificada">
     
-    <label for="min_alunos">Mínimo de Alunos</label>
+    <label for="min_alunos">Mínimo de alunos</label>
     <input type="text" name="min_alunos">
     
-    <label for="max_alunos">Máximo de Alunos</label>
+    <label for="max_alunos">Máximo de alunos</label>
     <input type="text" name="max_alunos">
     
     <button>Salvar</button>
@@ -37,7 +41,15 @@
   
 </form>
 
-@foreach
+@foreach($cursos as $curso)
+
+  <form action="{{ route('pagina-curso', $curso) }}" method="get">
+
+    <button>{{$curso -> nome}}</button>
+
+  </form> 
+
+@endforeach
   
 </body>
 </html>

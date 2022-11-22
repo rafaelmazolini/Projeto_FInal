@@ -20,6 +20,7 @@ return new class extends Migration
             $table->text('descricao_simplificada');
             $table->integer('min_alunos');
             $table->integer('max_alunos');
+            $table->integer('n_alunos');
             $table->string('status');
             //Imagem
             $table->integer('cpf_professor') -> nullable();
