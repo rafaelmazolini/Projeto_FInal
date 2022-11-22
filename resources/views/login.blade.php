@@ -21,9 +21,5 @@
     <button>Login</button>
 
     </br>
-    
-    <div>
-      <a href="/">Home</a>
-    </div> 
-    
+  
 @endsection

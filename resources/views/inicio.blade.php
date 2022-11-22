@@ -4,8 +4,5 @@
 
 @section ('content')  
 
-<h1>Algum Titulo</h1>
-
-
-
+<h1> Algum titulo </h1>
 @endsection

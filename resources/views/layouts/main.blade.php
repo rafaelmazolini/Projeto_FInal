@@ -43,7 +43,7 @@
             </nav>
         </header>
         
-        <hr />
+        
 
         @yield('content')
 
