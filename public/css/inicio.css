@@ -1,0 +1,17 @@
+body{
+    background-color: #35363a;
+}
+
+.titulo{
+    font-family: "Roboto Regula", sans-serif;
+    color: white;
+    display: flex;
+    height: 100px;
+    
+}
+
+#icon{
+    scale: 35%;
+    padding: 0;
+    margin: 0;
+}
