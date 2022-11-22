@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AlunoController;
+use App\Http\Controllers\AlunoCursoController;
 use App\Http\Controllers\ControleController;
 use App\Http\Controllers\CursoController;
 use App\Http\Controllers\LoginController;
@@ -49,3 +50,6 @@ Route::post('/deleta-curso/{curso}', [CursoController::class, 'deletaCurso']) ->
 Route::get('/crud-professores', [SecretariaController::class, 'crudProfessores']) -> name('crud-professores');
 Route::get('/crud-alunos', [SecretariaController::class, 'crudAlunos']) -> name('crud-alunos');
 Route::get('/crud-cursos', [SecretariaController::class, 'crudCursos']) -> name('crud-cursos');
+
+
+Route::get('/matricula-aluno/{aluno}/{curso}', [AlunoCursoController::class, 'matriculaAluno']) -> name('matricula-aluno');

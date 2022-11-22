@@ -5,6 +5,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Raspadinha Cursos</title>
+  
+  <script></script>
 
 </head>
 <body>
@@ -80,7 +82,7 @@
     
     <p>Nome: {{ $aluno -> nome }}</p>
     <p>CPF: {{ $aluno -> cpf }}</p>
-    <p>Endereço: {{ $aluno -> endereço }}</p>
+    <p>Endereço: {{ $aluno -> endereco }}</p>
     <p>Filme favorito: {{ $aluno -> filme }}</p>
     <h4>Informações de Login</h4>
     <p>Usuário: {{ $aluno -> usuario }}</p>
@@ -105,6 +107,47 @@
     </form>
   
   @endif
+  
+  @foreach($cursos as $curso)
+  
+    @if(count($aluno -> cursos) > 0)
+    
+      Falta terminar
+      
+    @endif
+    
+    @if(count($aluno -> cursos) == 0)
+    
+    <div class="curso">
+        
+        <h2>{{ $curso -> nome }}</h2>
+        <p>{{ $curso -> descricao_simplificada }}</p>
+          
+        <form action="{{ route('matricula-aluno', [$aluno, $curso]) }}" method="get">
+          <button>Matricular-se</button>
+        </form>
+        
+      </div>
+    
+    @endif
+  
+  
+  @endforeach
+  
+  <div>
+    
+    <h2>Meus Cursos</h2>
+    
+    @foreach($aluno -> cursos as $curso)
+    
+      <div>
+        <h2>{{ $curso -> nome }}</h2>
+        <p>{{ $curso -> descricao_simplificada }}</p>
+      </div>  
+    
+    @endforeach
+    
+  </div>
   
 </body>
 </html>
