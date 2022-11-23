@@ -116,7 +116,7 @@
   
   @foreach($aluno -> cursos as $matriculado)
   
-    <p>{{ $matriculado -> nome }}</p>
+    <a href="{{ route('pagina-curso', [$matriculado, 'aluno']) }}">{{ $matriculado -> nome }}</a><br>
   
   @endforeach
   
@@ -146,6 +146,12 @@
     @endif
   
   @endforeach
+  
+  @if($matriculadoAux == 1)
+    
+    <p>Nenhum curso disponível.</p>
+  
+  @endif
   
 </body>
 </html>

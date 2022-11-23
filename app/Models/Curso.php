@@ -13,5 +13,9 @@ class Curso extends Model
         return $this -> belongsToMany(Aluno::class, 'aluno_curso');
     }
     
+    public function professor(){
+        return $this -> belongsTo(Professor::class);
+    }
+    
     use HasFactory;
 }

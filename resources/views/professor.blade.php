@@ -59,5 +59,53 @@
   
   @endif
   
+  <h2>Meus Cursos</h2>
+  
+  @if(count($professor -> cursos) == 0)
+    <p>Não está matriculado em nenhum curso.</p>
+  @endif
+  
+  @foreach($professor -> cursos as $matriculado)
+  
+    <a href="{{ route('pagina-curso', [$matriculado, 'professor']) }}">{{ $matriculado -> nome }}</a><br>
+  
+  @endforeach
+  
+  <h2>Cursos Disponíveis</h2>
+  
+  @php($matriculadoAux = 0)
+  
+  @foreach($cursos as $curso)
+  
+    @php($matriculadoAux = 0)
+  
+    @foreach($professor -> cursos as $matriculado)
+    
+      @if($curso -> id == $matriculado -> id)
+      
+        @php($matriculadoAux = 1)
+      
+      @endif
+    
+    @endforeach
+    
+    @if($matriculadoAux == 0)
+    
+    <p>{{ $curso -> nome }}</p>
+      <form action="{{ route('matricula-professor', [$professor, $curso]) }}" method="get">
+        <button>Matricular-se</button>
+      </form>
+    
+    @endif
+  
+  @endforeach
+  
+  @if($matriculadoAux == 1 || count($cursos) == 0)
+    
+    <p>Nenhum curso disponível.</p>
+  
+  @endif
+  
+  
 </body>
 </html>

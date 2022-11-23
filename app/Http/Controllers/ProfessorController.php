@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Curso;
 use App\Models\Professor;
 use Illuminate\Http\Request;
 
 class ProfessorController extends Controller
 {
     public function index($professor, $alteraAux = 0){
-        return view('professor', ['professor' => Professor::find($professor), 'alteraAux' => $alteraAux]);
+        return view('professor', ['professor' => Professor::find($professor), 'alteraAux' => $alteraAux, 'cursos' => Curso::all()]);
     }
     
     //Retorna a pagina para a edição do professor
@@ -35,5 +36,15 @@ class ProfessorController extends Controller
         Professor::destroy($professor);
         
         return redirect() -> route('crud-professores');
+    }
+    
+    public function matriculaProfessor($professor, $curso){
+        $curso = Curso::find($curso);
+        $professor = Professor::find($professor);
+        
+        $curso -> professor_id = $professor -> id;
+        $curso -> save();
+        
+        return $this -> index($professor -> id, 0);
     }
 }
