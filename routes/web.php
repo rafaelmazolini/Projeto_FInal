@@ -23,7 +23,7 @@ Route::get('/secretaria', [SecretariaController::class, 'index']) -> name('pagin
 Route::get('/moderador', [ModeradorController::class, 'index']) -> name('pagina-moderador');
 Route::get('/professor/{professor}', [ProfessorController::class, 'index']) -> name('pagina-professor');
 Route::get('/aluno/{aluno}', [AlunoController::class, 'index']) -> name('pagina-aluno');
-Route::get('/pagina-curso/{curso}', [CursoController::class, 'index']) -> name('pagina-curso');
+Route::get('/pagina-curso/{curso}/{usuario}', [CursoController::class, 'index']) -> name('pagina-curso');
 
 //Cadastro
 Route::post('/cria-aluno', [SecretariaController::class, 'criaAluno']) -> name('cria-aluno');
@@ -52,3 +52,4 @@ Route::get('/crud-cursos', [SecretariaController::class, 'crudCursos']) -> name(
 
 
 Route::get('/matricula-aluno/{aluno}/{curso}', [AlunoCursoController::class, 'matriculaAluno']) -> name('matricula-aluno');
+Route::get('/matricula-professor/{professor}/{curso}', [ProfessorController::class, 'matriculaProfessor']) -> name('matricula-professor');

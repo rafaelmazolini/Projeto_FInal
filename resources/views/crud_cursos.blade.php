@@ -43,7 +43,7 @@
 
 @foreach($cursos as $curso)
 
-  <form action="{{ route('pagina-curso', $curso) }}" method="get">
+  <form action="{{ route('pagina-curso', [$curso, 'secretaria']) }}" method="get">
 
     <button>{{$curso -> nome}}</button>
 

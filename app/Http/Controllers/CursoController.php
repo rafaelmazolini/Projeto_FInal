@@ -7,13 +7,13 @@ use Illuminate\Http\Request;
 
 class CursoController extends Controller
 {
-    public function index($curso, $alteraAux = 0){
-        return view('curso', ['curso' => Curso::find($curso), 'alteraAux' => $alteraAux]);
+    public function index($curso, $usuario, $alteraAux = 0){
+        return view('curso', ['curso' => Curso::find($curso), 'usuario' => $usuario, 'alteraAux' => $alteraAux]);
     }
     
     //Retorna a pagina para a edição do curso
     public function alteraDadosBotao($curso){
-        return $this -> index($curso, 1);
+        return $this -> index($curso, 'secretaria', 1);
     }
     
     //Atualiza os dados do curso e retorna a página dele
@@ -28,7 +28,7 @@ class CursoController extends Controller
         
         $cursoAux -> save();
         
-        return $this -> index($curso, 0);
+        return $this -> index($curso, 'secretaria', 0);
     }   
     
     public function deletaCurso($curso){
