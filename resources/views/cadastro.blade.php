@@ -9,9 +9,5 @@
   <form action="{{ route('login') }}" method="post">
     {{ csrf_field() }}
     
-   
-  
-    
-   
-  
+
 @endsection

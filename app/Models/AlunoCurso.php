@@ -5,13 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Aluno extends Model
+class AlunoCurso extends Model
 {
     protected $guarded = [];
-    
-    public function cursos(){
-        return $this -> belongsToMany(Curso::class, 'aluno_curso');
-    }
+    protected $table = 'aluno_curso';
     
     use HasFactory;
 }

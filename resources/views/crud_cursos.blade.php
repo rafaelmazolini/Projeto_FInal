@@ -1,12 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Raspadinha Cursos</title>
-</head>
-<body>
+@extends('layouts.main')
+
+@section('title', 'Raspadinha Cursos')
+
+@section ('content')  
+
+  <form action="{{ route('pagina-inicio') }}" method="get">
+    <button>Menu</button>
+  </form>
 
 <h1>Cursos</h1>
   
@@ -26,16 +26,25 @@
     <label for="descricao_simplifica">Descrição Simplificada</label>
     <input type="text" name="descricao_simplificada">
     
-    <label for="min_alunos">Mínimo de Alunos</label>
+    <label for="min_alunos">Mínimo de alunos</label>
     <input type="text" name="min_alunos">
     
-    <label for="max_alunos">Máximo de Alunos</label>
+    <label for="max_alunos">Máximo de alunos</label>
     <input type="text" name="max_alunos">
     
     <button>Salvar</button>
   </div>
   
 </form>
+
+@foreach($cursos as $curso)
+
+  <form action="{{ route('pagina-curso', [$curso, 'secretaria', 'aluno' => 1]) }}" method="get">
+
+    <button>{{$curso -> nome}}</button>
+
+  </form> 
+
+@endforeach
   
-</body>
-</html>
+@endsection

@@ -35,9 +35,6 @@
                     <li class="nav-item">
                         <a href="{{ route('pagina-login') }}" class="nav-link">Login</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="{{ route('pagina-cadastro') }}" class="nav-link">Cadastro</a>
-                    </li>
                 </ul>
             </div>
             </nav>
@@ -47,6 +44,7 @@
 
         @yield('content')
 
+        
         <footer>
             <p>Raspadinha Cursos &copy; 2022</p>
         </footer>

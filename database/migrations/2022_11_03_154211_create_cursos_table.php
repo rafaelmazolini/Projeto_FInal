@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Professor;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -20,9 +21,10 @@ return new class extends Migration
             $table->text('descricao_simplificada');
             $table->integer('min_alunos');
             $table->integer('max_alunos');
+            $table->integer('n_alunos');
             $table->string('status');
             //Imagem
-            $table->integer('cpf_professor') -> nullable();
+            $table->foreignIdFor(Professor::class) -> nullable();
             $table->timestamps();
         });
     }
