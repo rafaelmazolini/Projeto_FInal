@@ -19,6 +19,7 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(Aluno::class) -> constrained;
             $table->foreignIdFor(Curso::class) -> constrained;
+            $table->float('nota') -> nullable();
             $table->timestamps();
         });
     }

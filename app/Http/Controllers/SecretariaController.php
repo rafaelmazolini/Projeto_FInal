@@ -101,7 +101,7 @@ class SecretariaController extends Controller
     
     public function criaCurso(Request $request){
         //Cria o curso
-        Curso::create([
+        $curso = Curso::create([
             'nome' => $request -> nome,
             'descricao_completa' => $request -> descricao_completa,
             'descricao_simplificada' => $request -> descricao_simplificada,

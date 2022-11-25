@@ -122,6 +122,8 @@
   
   <h2>Cursos Disponíveis</h2>
   
+  @php($matriculadoAux = 0)
+  
   @foreach($cursos as $curso)
   
     @php($matriculadoAux = 0)

@@ -54,4 +54,5 @@ class AlunoController extends Controller
         return $this -> index($aluno, 0);
     }
 
+
 }

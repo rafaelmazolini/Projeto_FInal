@@ -13,7 +13,7 @@
     <button>Menu</button>
   </form>
 
-  @if($usuario == 'secretaria' || $usuario == 'moderador' || $usuario == 'professor')
+  @if($usuario == 'secretaria' || $usuario == 'moderador')
   
     @if($alteraAux == 0)
     
@@ -101,6 +101,49 @@
   
     @endif
     
+  @endif
+  
+  @if($usuario == 'professor' || $usuario = 'moderador')
+    
+      <h1>{{ $curso -> nome }}</h1>
+      
+      <p>Nome: {{ $curso -> nome }}</p>
+      <p>Descrição completa: {{ $curso -> descricao_completa }}</p>
+      <p>Descrição simplificada: {{ $curso -> descricao_simplificada }}</p>
+      <p>Mínimo de alunos: {{ $curso -> min_alunos }}</p>
+      <p>Máximo de alunos: {{ $curso -> max_alunos }}</p>
+      <p>Número de alunos matriculados: {{ $curso -> n_alunos }}</p>
+      <p>Status do curso: {{ $curso -> status }}</p>
+      <p>Professor: {{ $curso -> professor -> nome }}</p>
+      
+      <h3>Alunos Matriculados</h3>
+      @foreach($curso -> alunos as $aluno)
+      
+        <p>{{ $aluno -> nome }}</p>
+    
+        @php($notaAux = 0)
+        
+        @foreach($alunoCurso as $alCur)
+          @if($alCur -> curso_id == $curso -> id & $alCur -> aluno_id == $aluno -> id)
+            <p>Nota: {{ $alCur -> nota }}</p>
+            @php($notaAux = 0)
+          @endif
+          
+          @if($alCur -> nota != NULL)
+            @php($notaAux = 1)
+          @endif
+        @endforeach
+        
+        @if($notaAux == 0)
+          <form action="{{ route('atribui-nota', [$aluno, $curso]) }}" method="post">
+            {{ csrf_field() }}
+            <input type="text" name="nota" placeholder="Atribuir média do aluno">
+            <button>Salvar</button>
+          </form>
+        @endif
+        
+      @endforeach
+  
   @endif
   
 </body>

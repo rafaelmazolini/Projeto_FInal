@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Aluno;
+use App\Models\AlunoCurso;
 use App\Models\Curso;
 use Illuminate\Http\Request;
 
@@ -33,5 +34,20 @@ class AlunoCursoController extends Controller
         }
         
         return redirect() -> back();
+    }
+    
+    public function atribuiNota($aluno, $curso, Request $request){
+        
+        $curso = Curso::find($curso);
+        $aluno = Aluno::find($aluno);
+    
+        foreach(AlunoCurso::all() as $alunoCurso){
+            if($alunoCurso -> curso_id == $curso -> id & $alunoCurso -> aluno_id == $aluno -> id){
+                $alunoCurso -> nota = $request -> nota;
+                $alunoCurso -> save();
+                            
+                return redirect() -> back();
+            }
+        }
     }
 }
