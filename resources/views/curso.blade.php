@@ -14,7 +14,7 @@
   </form>
 
   @if($usuario == 'secretaria' || $usuario == 'moderador')
-  
+    
     @if($alteraAux == 0)
     
       <h1>{{ $curso -> nome }}</h1>
@@ -26,7 +26,13 @@
       <p>Máximo de alunos: {{ $curso -> max_alunos }}</p>
       <p>Número de alunos matriculados: {{ $curso -> n_alunos }}</p>
       <p>Status do curso: {{ $curso -> status }}</p>
-      <p>Professor: {{ $curso -> professor -> nome }}</p>
+      @if($curso -> professor != null)
+        <p>Professor: {{ $curso -> professor -> nome }}</p>
+      
+      @else
+        <p>Professor: Ainda não designado.</p>
+      @endif
+
       
       <h3>Alunos Matriculados</h3>
       @foreach($curso -> alunos as $aluno)
@@ -83,8 +89,6 @@
   @endif
   
   @if($usuario == 'aluno')
-  
-    @if($alteraAux == 0)
     
       <h1>{{ $curso -> nome }}</h1>
       
@@ -96,14 +100,22 @@
         <p>Professor: {{ $curso -> professor -> nome }}</p>
       @endif
       @if($curso -> professor == null)
-        <p>Professor: Não selecionado.</p>
+        <p>Professor: Não designado.</p>
       @endif
-  
-    @endif
+      
+      @foreach ($alunoCurso as $alCur)
+          @if ($alCur -> aluno_id == $aluno -> id & $alCur -> curso_id == $curso -> id)
+              @if($alCur -> nota == NULL)
+                <p>Nota: --/10</p>
+              @else
+                <p>Nota: {{ $alCur -> nota }}</p>
+              @endif
+          @endif
+      @endforeach
     
   @endif
   
-  @if($usuario == 'professor' || $usuario = 'moderador')
+  @if($usuario == 'professor')
     
       <h1>{{ $curso -> nome }}</h1>
       

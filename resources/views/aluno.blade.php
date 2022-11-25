@@ -116,7 +116,7 @@
   
   @foreach($aluno -> cursos as $matriculado)
   
-    <a href="{{ route('pagina-curso', [$matriculado, 'aluno']) }}">{{ $matriculado -> nome }}</a><br>
+    <a href="{{ route('pagina-curso', [$matriculado, 'aluno', 'aluno' => $aluno]) }}">{{ $matriculado -> nome }}</a><br>
   
   @endforeach
   
