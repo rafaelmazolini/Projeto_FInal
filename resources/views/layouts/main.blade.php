@@ -43,8 +43,6 @@
             </nav>
         </header>
         
-        
-
         @yield('content')
 
         <footer>
