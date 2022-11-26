@@ -28,6 +28,9 @@
                 <a href="/" class="navbar-brand">
                     <img src="/img/logo.jpg" alt="Logo">
                 </a>
+                
+                <h1 class="title">Raspadinha Cursos</h1>
+                
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a href="/" class="nav-link">Home</a>
@@ -40,8 +43,6 @@
             </nav>
         </header>
         
-        
-
         @yield('content')
 
         

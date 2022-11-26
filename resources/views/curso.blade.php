@@ -1,12 +1,8 @@
 @extends('layouts.main')
 
-@section('title', 'Raspadinha Cursos')
+@section('title', 'Raspadinha Cursos - curso')
 
 @section ('content')  
-
-  <form action="{{ route('pagina-inicio') }}" method="get">
-    <button>Menu</button>
-  </form>
 
   @if($usuario == 'secretaria' || $usuario == 'moderador')
     
