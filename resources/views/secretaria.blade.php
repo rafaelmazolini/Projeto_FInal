@@ -14,6 +14,7 @@
     
   </form>
   
+  </br>
   <form action="{{ route('crud-alunos') }}" method="get">
   
     {{ csrf_field() }}
@@ -21,6 +22,8 @@
     <button>ALUNOS</button>
     
   </form>
+  
+  </br>
   
   <form action="{{ route('crud-cursos') }}" method="get">
   
