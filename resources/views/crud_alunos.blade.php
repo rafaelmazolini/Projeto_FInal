@@ -4,50 +4,52 @@
 
 @section ('content')  
 
-<h1>Alunos</h1>
+  <h2 class="titulo">Alunos</h2>
 
-<form action="{{ route('cria-aluno') }}" method="post">
+    @foreach($alunos as $aluno)
+
+      <form action="{{ route('pagina-aluno', $aluno) }}" method="get">
+        
+        <button class="btn-aluno-crud">{{$aluno -> nome}}</button>
+
+      </form>  
+
+    @endforeach 
+
+  <form action="{{ route('cria-aluno') }}" method="post">
   
-  {{ csrf_field() }}
-  
-  <h3>Cadastrar Aluno</h3>
-  
-  <div>
-    <label for="nome">Nome Completo</label>
-    <input type="text" name="nome">
+    {{ csrf_field() }}
     
-    <label for="cpf">CPF</label>
-    <input type="text" name="cpf">
+    <h4 class="cadastrar-aluno">Cadastrar Aluno</h4>
     
-    <label for="cep">Cep:
+    <div>
+      <label for="nome">Nome Completo</label>
+      <input type="text" name="nome">
+      
+      <label for="cpf">CPF</label>
+      <input type="text" name="cpf">
+
+      <label for="cep">Cep:
         <input name="cep" type="text" id="cep" value="" size="10" maxlength="9"
                onblur="pesquisacep(this.value);" /></label>
-    
-    <label for="endereco">Endereço</label>
-    <input type="text" name="endereco" id="endereco">
-    
-    <label for="filme">Filme</label>
-    <input type="text" name="filme">
-    
-    <label for="usuario">Usuário</label>
-    <input type="text" name="usuario">
-    
-    <label for="senha">Senha</label>
-    <input type="password" name="senha">
-    
-    <button>Salvar</button>
-  </div>
-  
-</form>
+      
+      <label for="endereco">Endereço</label>
+      <input type="text" name="endereco" id="endereco">
 
-@foreach($alunos as $aluno)
+      <label for="filme">Filme</label>
+      <input type="text" name="filme" id="filme">
 
-  <form action="{{ route('pagina-aluno', $aluno) }}" method="get">
+      <br>
+      <h1></h1>
 
-    <button>{{$aluno -> nome}}</button>
+      <label for="usuario">Usuário</label>
+      <input type="text" name="usuario">
+      
+      <label for="senha">Senha</label>
+      <input type="password" name="senha">
+      <br>
+      <button class="btn" id="botao-salvar">Salvar</button>
+    </div>
+  </br>
 
-  </form> 
-
-  @endforeach  
-  
 @endsection

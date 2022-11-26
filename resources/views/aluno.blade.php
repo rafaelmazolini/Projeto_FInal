@@ -6,7 +6,7 @@
 
   @if($alteraAux == 0)
   
-    <h1>{{ $aluno -> nome }}</h1>
+    <h2>{{ $aluno -> nome }}</h2>
     
     <p>Nome: {{ $aluno -> nome }}</p>
     <p>CPF: {{ $aluno -> cpf }}</p>
@@ -16,24 +16,24 @@
     <p>Usuário: {{ $aluno -> usuario }}</p>
     
     <form action="{{ route('altera-dados-botao-A', $aluno) }}" method="get">
-      <button>Editar Dados</button>
+      <button class="btn-editar">Editar Dados</button>
     </form>
     
     <form action="{{ route('deleta-aluno', $aluno) }}" method="post">
       {{ csrf_field() }}
-      <button>Excluir aluno</button>
+      <button class="btn-editar">Excluir aluno</button>
     </form>
     
     <form action="{{ route('troca-senha-botao-A', $aluno) }}" method="get">
       {{ csrf_field() }}
-      <button>Trocar senha</button>
+      <button class="btn-editar">Trocar senha</button>
     </form>
   
   @endif
   
   @if($alteraAux == 1)
   
-    <h1>{{ $aluno -> nome }}</h1>
+    <h2>{{ $aluno -> nome }}</h2>
     
     <form action="{{ route('altera-dados-A', $aluno)}} " method="post">
     
@@ -54,20 +54,20 @@
       <label for="usuario">Usuário: </label>
       <input type="text" name="usuario" value="{{ $aluno -> usuario }}"> <br>
       
-      <button>Salvar</button>
+      <button class="btn" id="botao-salvar">Salvar</button>
     
     </form>
     
     <form action="{{ route('deleta-aluno', $aluno) }}" method="post">
       {{ csrf_field() }}
-      <button>Excluir aluno</button>
+      <button class="btn-editar">Excluir aluno</button>
     </form>
   
   @endif
   
   @if($alteraAux == 2)
   
-  <h1>{{ $aluno -> nome }}</h1>
+  <h2>{{ $aluno -> nome }}</h2>
     
     <p>Nome: {{ $aluno -> nome }}</p>
     <p>CPF: {{ $aluno -> cpf }}</p>

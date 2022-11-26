@@ -4,6 +4,6 @@
 
 @section ('content')  
 
-  <h1>Moderador</h1>
+  <h2>Moderador</h2>
   
 @endsection
