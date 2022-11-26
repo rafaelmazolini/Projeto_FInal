@@ -3,10 +3,6 @@
 @section('title', 'Raspadinha Cursos - Professores')
 
 @section ('content')  
-
-  <form action="{{ route('pagina-inicio') }}" method="get">
-    <button>Menu</button>
-  </form>
   
   <h1>Professores</h1>
   
