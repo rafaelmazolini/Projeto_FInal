@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Raspadinha Cursos')
+@section('title', 'Raspadinha Cursos - Professores')
 
 @section ('content')  
 

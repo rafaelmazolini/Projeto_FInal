@@ -40,8 +40,6 @@
             </nav>
         </header>
         
-        
-
         @yield('content')
 
         
