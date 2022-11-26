@@ -1,11 +1,13 @@
 @extends('layouts.main')
 
-@section('title', 'Raspadinha Cursos - Matricula')
+@section('title', 'Raspadinha Cursos - Secretária')
 
 @section ('content')  
   
   <h1>Secretaria</h1>
   
+  </br>
+
   <form action="{{ route('crud-professores') }}" method="get">
     
     {{ csrf_field() }}
@@ -19,7 +21,7 @@
   
     {{ csrf_field() }}
     
-    <button>ALUNOS</button>
+    <button>Alunos</button>
     
   </form>
   

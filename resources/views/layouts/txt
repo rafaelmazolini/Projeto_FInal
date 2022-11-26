@@ -1,0 +1,14 @@
+<div class="btn-group dropright">
+  <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  Alunos-Cadastrados
+</button>
+<div class="dropdown-menu">
+  <a href="{{ route('pagina-aluno', $aluno) }}">{{$aluno -> nome}}</a>
+</div>
+</div>
+
+
+<div style="margin-top: 15px">
+  <h3>{{$curso -> nome}}</h3>
+  <p>{{ $curso -> descricao_simplificada }}</p>
+</div>

@@ -4,7 +4,7 @@
 
 @section ('content')  
   
-  <div id="login-container" class="col-md-6 offset-md-3">
+<div id="login-container" class="col-md-2 offset-md-5">
     <h1>Login</h1>
     <form action="{{ route('login') }}" method="post">
     {{ csrf_field() }}
@@ -17,7 +17,7 @@
       <input type="password" class="form-control" name="senha" placeholder="Senha...">
     </div>
     </br>
-    <button>Login</button>
+    <button class="btn btn-secondary">Salvar</button>
     </form>
   </div>
 
