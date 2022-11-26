@@ -6,6 +6,7 @@ use App\Models\Aluno;
 use App\Models\Curso;
 use App\Models\Professor;
 use App\Models\Secretaria;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -47,6 +48,7 @@ class SecretariaController extends Controller
             'endereco' => $request -> endereco,
             'usuario' => $request -> usuario,
             'senha' => Hash::make($request -> senha),
+            'ultimo_acesso' => Carbon::now()
         ]);
         
         //Retorna para a mesma página
@@ -89,6 +91,7 @@ class SecretariaController extends Controller
             'filme' => $request -> filme,
             'usuario' => $request -> usuario,
             'senha' => Hash::make($request -> senha),
+            'ultimo_acesso' => Carbon::now(),
         ]);
         
         //Retorna para a mesma página
