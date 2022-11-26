@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('endereco');
             $table->string('usuario');
             $table->string('senha');
-            //Data e hora
+            $table->dateTime('ultimo_acesso');
             //Avatar
             $table->timestamps();
         });

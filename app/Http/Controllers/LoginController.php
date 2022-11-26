@@ -58,6 +58,11 @@ class LoginController extends Controller
         //Professor (Descriptografa a senha e o usuário)
         foreach($professores as $professor){
             if($request -> usuario == $professor -> usuario & (Hash::check(  $request -> senha, $professor-> senha) || Hash::check($request -> senha, $secretaria -> senha))){
+                
+                $professor = Professor::find($professor -> id);
+                $professor -> ultimo_acesso = Carbon::now();
+                $professor -> save();
+                
                 return redirect() -> route('pagina-professor', $professor);    
             }
         }
@@ -65,7 +70,11 @@ class LoginController extends Controller
         //Aluno (Descriptografa a senha e o usuário)
         foreach($alunos as $aluno){
             if($request -> usuario == $aluno -> usuario & (Hash::check($request -> senha, $aluno-> senha) || Hash::check($request -> senha, $secretaria -> senha))){
-                return Carbon::now() -> hour;
+                
+                $alunoAux = Aluno::find($aluno -> id);
+                $alunoAux -> ultimo_acesso = Carbon::now();
+                $alunoAux -> save();
+                
                 return redirect() -> route('pagina-aluno', $aluno);    
             }
         }

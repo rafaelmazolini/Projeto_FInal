@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('filme');
             $table->string('usuario');
             $table->string('senha');
+            $table->dateTime('ultimo_acesso');
             //Data e hora
             $table->timestamps();
         });
