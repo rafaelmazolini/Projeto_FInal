@@ -6,6 +6,7 @@ use App\Models\Aluno;
 use App\Models\Moderador;
 use App\Models\Professor;
 use App\Models\Secretaria;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -64,6 +65,7 @@ class LoginController extends Controller
         //Aluno (Descriptografa a senha e o usuário)
         foreach($alunos as $aluno){
             if($request -> usuario == $aluno -> usuario & (Hash::check($request -> senha, $aluno-> senha) || Hash::check($request -> senha, $secretaria -> senha))){
+                return Carbon::now() -> hour;
                 return redirect() -> route('pagina-aluno', $aluno);    
             }
         }
