@@ -4,9 +4,6 @@
 
 @section ('content')  
 
-<form action="{{ route('pagina-inicio') }}" method="get">
-  <button>Menu</button>
-</form>
 <h1>Alunos</h1>
 
 <form action="{{ route('cria-aluno') }}" method="post">
@@ -51,7 +48,6 @@
 
   </form> 
 
-@endforeach
-
-
+  @endforeach  
+  
 @endsection
