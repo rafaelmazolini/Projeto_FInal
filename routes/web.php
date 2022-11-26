@@ -1,5 +1,4 @@
 <?php
-
 use App\Http\Controllers\AlunoController;
 use App\Http\Controllers\AlunoCursoController;
 use App\Http\Controllers\ControleController;
