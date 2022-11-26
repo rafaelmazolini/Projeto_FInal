@@ -1,17 +1,10 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Raspadinha Cursos</title>
-  
-  <script></script>
+@extends('layouts.main')
 
-</head>
-<body>
+@section('title', 'Raspadinha Cursos')
 
-  <form action="{{ route('pagina-inicio') }}" method="get">
+@section ('content')  
+
+<form action="{{ route('pagina-inicio') }}" method="get">
     <button>Menu</button>
   </form>
 
@@ -21,7 +14,7 @@
     
     <p>Nome: {{ $aluno -> nome }}</p>
     <p>CPF: {{ $aluno -> cpf }}</p>
-    <p>Endereço: {{ $aluno -> endereco }}</p>
+    <p>Endereço: {{ $aluno -> endereço }}</p>
     <p>Filme favorito: {{ $aluno -> filme }}</p>
     <h4>Informações de Login</h4>
     <p>Usuário: {{ $aluno -> usuario }}</p>
@@ -82,7 +75,7 @@
     
     <p>Nome: {{ $aluno -> nome }}</p>
     <p>CPF: {{ $aluno -> cpf }}</p>
-    <p>Endereço: {{ $aluno -> endereco }}</p>
+    <p>Endereço: {{ $aluno -> endereço }}</p>
     <p>Filme favorito: {{ $aluno -> filme }}</p>
     <h4>Informações de Login</h4>
     <p>Usuário: {{ $aluno -> usuario }}</p>
@@ -107,51 +100,9 @@
     </form>
   
   @endif
+
+  @endsecion
+
+  <h1>Aluno</h1>
   
-  <h2>Meus Cursos</h2>
-  
-  @if(count($aluno -> cursos) == 0)
-    <p>Não está matriculado em nenhum curso.</p>
-  @endif
-  
-  @foreach($aluno -> cursos as $matriculado)
-  
-    <a href="{{ route('pagina-curso', [$matriculado, 'aluno']) }}">{{ $matriculado -> nome }}</a><br>
-  
-  @endforeach
-  
-  <h2>Cursos Disponíveis</h2>
-  
-  @foreach($cursos as $curso)
-  
-    @php($matriculadoAux = 0)
-  
-    @foreach($aluno -> cursos as $matriculado)
-    
-      @if($curso -> id == $matriculado -> id)
-      
-        @php($matriculadoAux = 1)
-      
-      @endif
-    
-    @endforeach
-    
-    @if($matriculadoAux == 0)
-    
-    <p>{{ $curso -> nome }}</p>
-      <form action="{{ route('matricula-aluno', [$aluno, $curso]) }}" method="get">
-        <button>Matricular-se</button>
-      </form>
-    
-    @endif
-  
-  @endforeach
-  
-  @if($matriculadoAux == 1)
-    
-    <p>Nenhum curso disponível.</p>
-  
-  @endif
-  
-</body>
-</html>
+@endsecion
