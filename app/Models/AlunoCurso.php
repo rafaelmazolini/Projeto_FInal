@@ -5,14 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Professor extends Model
+class AlunoCurso extends Model
 {
-    protected $table = 'professores';
     protected $guarded = [];
+    protected $table = 'aluno_curso';
     
-    public function cursos(){
-        return $this -> hasMany(Curso::class); //Relacionamento One to One
-    }
-
     use HasFactory;
 }

@@ -13,5 +13,17 @@ class Curso extends Model
         return $this -> belongsToMany(Aluno::class, 'aluno_curso');
     }
     
+    public function professor(){
+        return $this -> belongsTo(Professor::class);
+    }
+    
+    public $notas = [];
+    
+    public function atribuiNotas0(){
+        foreach($this -> alunos as $alunos){
+            array_push($this -> notas, 0);
+        }
+    }
+    
     use HasFactory;
 }

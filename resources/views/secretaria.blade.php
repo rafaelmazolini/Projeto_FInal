@@ -1,17 +1,8 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Raspadinha Cursos</title>
-  
-</head>
-<body>
+@extends('layouts.main')
 
-  <form action="{{ route('pagina-inicio') }}" method="get">
-    <button>Menu</button>
-  </form>
+@section('title', 'Raspadinha Cursos - Matricula')
+
+@section ('content')  
   
   <h1>Secretaria</h1>
   
@@ -39,5 +30,4 @@
     
   </form>
   
-</body>
-</html>
+@endsection

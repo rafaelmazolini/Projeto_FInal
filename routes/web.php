@@ -1,5 +1,4 @@
 <?php
-
 use App\Http\Controllers\AlunoController;
 use App\Http\Controllers\AlunoCursoController;
 use App\Http\Controllers\ControleController;
@@ -23,7 +22,7 @@ Route::get('/secretaria', [SecretariaController::class, 'index']) -> name('pagin
 Route::get('/moderador', [ModeradorController::class, 'index']) -> name('pagina-moderador');
 Route::get('/professor/{professor}', [ProfessorController::class, 'index']) -> name('pagina-professor');
 Route::get('/aluno/{aluno}', [AlunoController::class, 'index']) -> name('pagina-aluno');
-Route::get('/pagina-curso/{curso}', [CursoController::class, 'index']) -> name('pagina-curso');
+Route::get('/pagina-curso/curso={curso}/usuario={usuario}/aluno={aluno}', [CursoController::class, 'index']) -> name('pagina-curso');
 
 //Cadastro
 Route::post('/cria-aluno', [SecretariaController::class, 'criaAluno']) -> name('cria-aluno');
@@ -40,7 +39,6 @@ Route::get('/altera-dados-botao-P/{professor}', [ProfessorController::class, 'al
 Route::post('/altera-dados-P/{professor}', [ProfessorController::class, 'alteraDados']) -> name('altera-dados-P');
 Route::get('/altera-dados-botao-C/{curso}', [CursoController::class, 'alteraDadosBotao']) -> name('altera-dados-botao-C');
 Route::post('/altera-dados-C/{curso}', [CursoController::class, 'alteraDados']) -> name('altera-dados-C');
-//FAZER A EDIÇÃO DOS CURSOS
 
 //Exclusão de Cadastro
 Route::post('/deleta-aluno/{aluno}', [AlunoController::class, 'deletaAluno']) -> name('deleta-aluno');
@@ -52,4 +50,6 @@ Route::get('/crud-alunos', [SecretariaController::class, 'crudAlunos']) -> name(
 Route::get('/crud-cursos', [SecretariaController::class, 'crudCursos']) -> name('crud-cursos');
 
 
-Route::get('/matricula-aluno/{aluno}/{curso}', [AlunoCursoController::class, 'matriculaAluno']) -> name('matricula-aluno');
+Route::get('/matricula-aluno/{aluno}{curso}', [AlunoCursoController::class, 'matriculaAluno']) -> name('matricula-aluno');
+Route::get('/matricula-professor/{professor}/{curso}', [ProfessorController::class, 'matriculaProfessor']) -> name('matricula-professor');
+Route::post('/atribui-nota/{aluno}/{curso}',[AlunoCursoController::class, 'atribuiNota']) -> name('atribui-nota');
