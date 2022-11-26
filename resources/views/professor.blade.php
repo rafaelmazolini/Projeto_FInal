@@ -3,10 +3,6 @@
 @section('title', 'Raspadinha Cursos - Professor')
 
 @section ('content')  
-  
-<form action="{{ route('pagina-inicio') }}" method="get">
-  <button>Menu</button>
-</form>
 
 @if($alteraAux == 0)
 
