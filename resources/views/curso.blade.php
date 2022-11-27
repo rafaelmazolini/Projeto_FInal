@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Raspadinha Cursos - curso')
+@section('title', 'Raspadinha Cursos - Cursos')
 
 @section ('content')  
 
@@ -9,7 +9,7 @@
     
     @if($alteraAux == 0)
     
-      <h1>{{ $curso -> nome }}</h1>
+      <h2>{{ $curso -> nome }}</h2>
       
       <p>Nome: {{ $curso -> nome }}</p>
       <p>Descrição completa: {{ $curso -> descricao_completa }}</p>
@@ -46,19 +46,19 @@
       @endif
       
       <form action="{{ route('altera-dados-botao-C', $curso) }}" method="get">
-        <button>Editar Dados</button>
+        <button class="btn-editar">Editar Dados</button>
       </form>
       
       <form action="{{ route('deleta-curso', $curso) }}" method="post">
         {{ csrf_field() }}
-        <button>Excluir curso</button>
+        <button class="btn-editar">Excluir Curso</button>
       </form>
   
     @endif
   
     @if($alteraAux == 1)
   
-      <h1>{{ $curso -> nome }}</h1>
+      <h2>{{ $curso -> nome }}</h2>
       
       <form action="{{ route('altera-dados-C', $curso)}} " method="post">
       
@@ -79,7 +79,7 @@
         <label for="max_alunos">Máximo de alunos: </label>
         <input type="text" name="max_alunos" value="{{ $curso -> max_alunos }}"> <br>
         
-        <button>Salvar</button>
+        <button class="btn" id="botao-salvar">Salvar</button>
       
       </form>
       
@@ -94,7 +94,7 @@
   
   @if($usuario == 'aluno')
     
-      <h1>{{ $curso -> nome }}</h1>
+      <h2>{{ $curso -> nome }}</h2>
       
       <p>Nome: {{ $curso -> nome }}</p>
       <p>Descrição completa: {{ $curso -> descricao_completa }}</p>
@@ -127,7 +127,7 @@
   
   @if($usuario == 'professor')
     
-      <h1>{{ $curso -> nome }}</h1>
+      <h2>{{ $curso -> nome }}</h2>
       
       <p>Nome: {{ $curso -> nome }}</p>
       <p>Descrição completa: {{ $curso -> descricao_completa }}</p>
