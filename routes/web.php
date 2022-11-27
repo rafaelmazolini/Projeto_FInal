@@ -53,3 +53,7 @@ Route::get('/crud-cursos', [SecretariaController::class, 'crudCursos']) -> name(
 Route::get('/matricula-aluno/{aluno}{curso}', [AlunoCursoController::class, 'matriculaAluno']) -> name('matricula-aluno');
 Route::get('/matricula-professor/{professor}/{curso}', [ProfessorController::class, 'matriculaProfessor']) -> name('matricula-professor');
 Route::post('/atribui-nota/{aluno}/{curso}',[AlunoCursoController::class, 'atribuiNota']) -> name('atribui-nota');
+
+Route::get('/equipe', function() {
+    return view('equipe');
+});

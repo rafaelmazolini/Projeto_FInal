@@ -24,7 +24,7 @@
       <button class="btn-editar">Excluir aluno</button>
     </form>
     
-    <form action="{{ route('troca-senha-botao-A', $aluno) }}" method="get">
+    <form action="{{ route('troca-senha-A', $aluno) }}" method="post">
       {{ csrf_field() }}
       <button class="btn-editar">Trocar senha</button>
     </form>
@@ -98,3 +98,6 @@
   @endif
   
 @endsection
+
+
+
