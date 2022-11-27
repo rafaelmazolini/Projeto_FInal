@@ -4,19 +4,22 @@
 
 @section ('content')  
 
-<h2>Cursos</h2>
+<h2>Cursos Disponíveis</h2>
 
   @foreach($cursos as $curso)
 
     <form action="{{ route('pagina-curso', [$curso, 'secretaria', 'aluno' => 1]) }}" method="get">
+    {{ csrf_field() }}
 
       <button class="btn-curso-crud">{{$curso -> nome}}</button>
 
     </form> 
 
   @endforeach
+
+  <br> 
   
-<form action="{{ route('cria-curso') }}" method="post">
+  <form action="{{ route('cria-curso') }}" method="post">
   
   {{ csrf_field() }}
   
@@ -33,7 +36,6 @@
     <input type="text" name="max_alunos" size="5" maxlength="4">
     
     <br>
-    <h1></h1>
     
     <label for="descricao_completa">Descrição Completa</label>
     <input type="text" name="descricao_completa">
@@ -47,5 +49,5 @@
   </div>
   
 </form>
-  
+
 @endsection
