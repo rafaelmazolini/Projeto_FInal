@@ -6,7 +6,7 @@
 
 @if($alteraAux == 0)
 
-  <h1>{{ $professor -> nome }}</h1>
+  <h2>{{ $professor -> nome }}</h2>
   
   <p>Nome: {{ $professor -> nome }}</p>
   <p>CPF: {{ $professor -> cpf }}</p>
@@ -15,19 +15,19 @@
   <p>Usuário: {{ $professor -> usuario }}</p>
   
   <form action="{{ route('altera-dados-botao-P', $professor) }}" method="get">
-    <button>Editar Dados</button>
+    <button class="btn-editar">Editar Dados</button>
   </form>
   
   <form action="{{ route('deleta-professor', $professor) }}" method="post">
     {{ csrf_field() }}
-    <button>Excluir professor</button>
+    <button class="btn-editar">Excluir professor</button>
   </form>
 
 @endif
 
 @if($alteraAux == 1)
 
-  <h1>{{ $professor -> nome }}</h1>
+  <h2>{{ $professor -> nome }}</h2>
   
   <form action="{{ route('altera-dados-P', $professor)}}" method="post">
   
@@ -45,13 +45,13 @@
     <label for="usuario">Usuário: </label>
     <input type="text" name="usuario" value="{{ $professor -> usuario }}"> <br>
     
-    <button>Salvar</button>
+    <button class="btn">Salvar</button>
   
   </form>
 
 @endif
 
-<h2>Meus Cursos</h2>
+<h2 class="cursos-prof">Meus Cursos</h2>
 
 @if(count($professor -> cursos) == 0)
   <p>Não está matriculado em nenhum curso.</p>
@@ -63,7 +63,7 @@
 
 @endforeach
 
-<h2>Cursos Disponíveis</h2>
+<h2 class="cursos-prof">Cursos Disponíveis</h2>
 
 @php($matriculadoAux = 0)
 
@@ -85,7 +85,7 @@
   
   <p>{{ $curso -> nome }}</p>
     <form action="{{ route('matricula-professor', [$professor, $curso]) }}" method="get">
-      <button>Matricular-se</button>
+      <button class="btn-editar">Matricular-se</button>
     </form>
   
   @endif
@@ -97,6 +97,5 @@
   <p>Nenhum curso disponível.</p>
 
 @endif
-
   
 @endsection
