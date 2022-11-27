@@ -138,6 +138,10 @@
       <p>Status do curso: {{ $curso -> status }}</p>
       <p>Professor: {{ $curso -> professor -> nome }}</p>
       
+      <form action="{{ route('desmatricula-professor', [$curso -> professor, $curso]) }}" method="">
+        <button class="btn-aluno-crud">Parar de ministrar</button>
+      </form>
+      
       <h3>Alunos Matriculados</h3>
       @foreach($curso -> alunos as $aluno)
       
@@ -160,7 +164,7 @@
           <form action="{{ route('atribui-nota', [$aluno, $curso]) }}" method="post">
             {{ csrf_field() }}
             <input type="text" name="nota" placeholder="Atribuir média do aluno">
-            <button>Salvar</button>
+            <button class="btn-aluno-crud">Salvar</button>
           </form>
         @endif
         

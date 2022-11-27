@@ -47,4 +47,14 @@ class ProfessorController extends Controller
         
         return $this -> index($professor -> id, 0);
     }
+    
+    public function desmatriculaProfessor($professor, $curso){
+        $professor = Professor::find($professor);
+        $curso = Curso::find($curso);
+        
+        $curso -> professor_id = NULL;
+        $curso -> save();
+        
+        return $this -> index($professor -> id, 0);
+    }
 }
