@@ -15,6 +15,8 @@
     <h4>Informações de Login</h4>
     <p>Usuário: {{ $aluno -> usuario }}</p>
     
+    
+    
     <form action="{{ route('altera-dados-botao-A', $aluno) }}" method="get">
       <button class="btn-editar">Editar Dados</button>
     </form>
@@ -96,8 +98,53 @@
     </form>
   
   @endif
+    
+
+  <h2>Meus Cursos</h2>
+  
+  @if(count($aluno -> cursos) == 0)
+    <p>Não está matriculado em nenhum curso.</p>
+  @endif
+  
+  @foreach($aluno -> cursos as $matriculado)
+  
+    <a href="{{ route('pagina-curso', [$matriculado, 'aluno', 'aluno' => $aluno]) }}">{{ $matriculado -> nome }}</a><br>
+  
+  @endforeach
+  
+  <h2>Cursos Disponíveis</h2>
+  
+  @php($matriculadoAux = 0)
+  
+  @foreach($cursos as $curso)
+  
+    @php($matriculadoAux = 0)
+  
+    @foreach($aluno -> cursos as $matriculado)
+    
+      @if($curso -> id == $matriculado -> id)
+      
+        @php($matriculadoAux = 1)
+      
+      @endif
+    
+    @endforeach
+    
+    @if($matriculadoAux == 0)
+    
+    <p>{{ $curso -> nome }}</p>
+      <form action="{{ route('matricula-aluno', [$aluno, $curso]) }}" method="get">
+        <button>Matricular-se</button>
+      </form>
+    
+    @endif
+  
+  @endforeach
+  
+  @if($matriculadoAux == 1)
+    
+    <p>Nenhum curso disponível.</p>
+  
+  @endif
   
 @endsection
-
-
-

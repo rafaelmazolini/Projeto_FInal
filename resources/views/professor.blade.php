@@ -54,7 +54,7 @@
 <h2 class="cursos-prof">Meus Cursos</h2>
 
 @if(count($professor -> cursos) == 0)
-  <p>Não está matriculado em nenhum curso.</p>
+  <p>Não está ministrando em nenhum curso.</p>
 @endif
 
 @foreach($professor -> cursos as $matriculado)
@@ -85,7 +85,7 @@
   
   <p>{{ $curso -> nome }}</p>
     <form action="{{ route('matricula-professor', [$professor, $curso]) }}" method="get">
-      <button class="btn-editar">Matricular-se</button>
+      <button class="btn-editar">Ministrar</button>
     </form>
   
   @endif
