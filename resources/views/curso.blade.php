@@ -5,6 +5,7 @@
 @section ('content')  
 
   @if($usuario == 'secretaria' || $usuario == 'moderador')
+
     
     @if($alteraAux == 0)
     
@@ -26,11 +27,23 @@
 
       
       <h3>Alunos Matriculados</h3>
+      @if($curso -> n_alunos == 0)
+        <p>Nenhum aluno matriculado.</p>
+      @endif
       @foreach($curso -> alunos as $aluno)
       
         <p>{{ $aluno -> nome }}</p>
         
       @endforeach
+      
+      @if($curso -> n_alunos > 0)
+      
+        <h4>Média Geral do Curso: {{ $mediaGeral }}</h4>
+        
+        <h4>Número de Aprovados: {{ $aprovados[0] }} ({{ $aprovados[1] }}% dos alunos)</h4>
+        <h4>Número de Reprovados: {{ $curso -> n_alunos - $aprovados[0] }} ({{ 100 - $aprovados[1]}}% dos alunos)</h4>
+        
+      @endif
       
       <form action="{{ route('altera-dados-botao-C', $curso) }}" method="get">
         <button>Editar Dados</button>
@@ -103,6 +116,12 @@
               @endif
           @endif
       @endforeach
+      
+      <form action="{{ route('desmatricula-aluno', [$aluno, $curso]) }}" method="get">
+        {{ csrf_field() }}
+        
+        <button>Desmatricular-se</button>
+      </form>
     
   @endif
   
