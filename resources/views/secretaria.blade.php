@@ -4,15 +4,13 @@
 
 @section ('content')  
   
-  <h1>Secretaria</h1>
+  <h2 class="secretaria-titulo">Secretaria</h1>
   
-  </br>
-
   <form action="{{ route('crud-professores') }}" method="get">
     
     {{ csrf_field() }}
   
-    <button>PROFESSORES</button>
+    <button class="btn-categorias">Professores</button>
     
   </form>
   
@@ -21,7 +19,7 @@
   
     {{ csrf_field() }}
     
-    <button>Alunos</button>
+    <button class="btn-categorias">Alunos</button>
     
   </form>
   
@@ -31,7 +29,7 @@
   
     {{ csrf_field() }}
     
-    <button>CURSOS</button>
+    <button class="btn-categorias">Cursos</button>
     
   </form>
   

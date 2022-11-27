@@ -33,7 +33,7 @@
             <nav class="navber navbar-expand-lg navbar-light">
             <div class="collapse navbar-collapse" id="navbar"> 
                 <a href="/" class="navbar-brand">
-                    <img src="/img/logo.jpg" alt="Logo">
+                    <img src="/img/raspadinhaicon.png" alt="Logo">
                 </a>
                 
                 <h1 class="title">Raspadinha Cursos</h1>
