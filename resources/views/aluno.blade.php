@@ -10,7 +10,7 @@
     
     <p>Nome: {{ $aluno -> nome }}</p>
     <p>CPF: {{ $aluno -> cpf }}</p>
-    <p>Endereço: {{ $aluno -> endereço }}</p>
+    <p>Endereço: {{ $aluno -> endereco }}</p>
     <p>Filme favorito: {{ $aluno -> filme }}</p>
     <h4>Informações de Login</h4>
     <p>Usuário: {{ $aluno -> usuario }}</p>
@@ -73,7 +73,7 @@
     
     <p>Nome: {{ $aluno -> nome }}</p>
     <p>CPF: {{ $aluno -> cpf }}</p>
-    <p>Endereço: {{ $aluno -> endereço }}</p>
+    <p>Endereço: {{ $aluno -> endereco }}</p>
     <p>Filme favorito: {{ $aluno -> filme }}</p>
     <h4>Informações de Login</h4>
     <p>Usuário: {{ $aluno -> usuario }}</p>
@@ -134,7 +134,7 @@
     
     <p>{{ $curso -> nome }}</p>
       <form action="{{ route('matricula-aluno', [$aluno, $curso]) }}" method="get">
-        <button>Matricular-se</button>
+        <button class="btn">Matricular-se</button>
       </form>
     
     @endif

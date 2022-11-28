@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Aluno;
+use App\Models\AlunoCurso;
 use App\Models\Curso;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -37,7 +38,19 @@ class AlunoController extends Controller
     }
     
     public function deletaAluno($aluno){
-        Aluno::destroy($aluno);
+    
+        $aluno = Aluno::find($aluno);
+        
+        foreach(AlunoCurso::all() as $alunoCurso){
+            if($alunoCurso -> aluno_id == $aluno -> id){
+                $curso = Curso::find($alunoCurso -> curso_id);
+                $curso -> n_alunos = $curso -> n_alunos - 1;
+                $curso -> save();
+                AlunoCurso::destroy($alunoCurso -> id);
+            }
+        }
+        
+        Aluno::destroy($aluno -> id);
         
         return redirect() -> route('crud-alunos');
     }
