@@ -36,6 +36,15 @@ class AlunoCursoController extends Controller
         return redirect() -> back();
     }
     
+    public function desmatriculaAluno($aluno, $curso){
+        $aluno = Aluno::find($aluno);
+        $curso = Curso::find($curso);
+        
+        $aluno -> cursos() -> detach($curso);
+        
+        return redirect() -> route('pagina-aluno', $aluno);
+    }
+    
     public function atribuiNota($aluno, $curso, Request $request){
         
         $curso = Curso::find($curso);

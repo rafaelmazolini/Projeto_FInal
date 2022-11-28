@@ -4,22 +4,22 @@
 
 @section ('content')  
   
-  <h1>Login</h1>
-  
-  <form action="{{ route('login') }}" method="post">
+<div id="login-container" class="col-md-2 offset-md-5">
+    <h1>Login</h1>
+    <form action="{{ route('login') }}" method="post">
     {{ csrf_field() }}
-    
-    <div>
-      <label for="usuario">Usuário</label>
-      <input type="text" name="usuario">    
-    </br>
-      <label for="senha">Senha</label>
-      <input type="password" name="senha">
+    <div class="form group">
+      <label class="form-text" for="usuario">Usuario:</label>
+      <input type="text"  class="form-control" name="usuario" placeholder="Usuario... ">
     </div>
-
-    
-    <button>Login</button>
-
+    <div class="form group">
+      <label class="form-text" for="senha">Senha:</label>
+      <input type="password" class="form-control" name="senha" placeholder="Senha...">
+    </div>
     </br>
-  
+    <button class="btn btn-secondary">Salvar</button>
+    </form>
+  </div>
+
 @endsection
+
