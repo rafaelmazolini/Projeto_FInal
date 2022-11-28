@@ -26,10 +26,10 @@
 
             <div class="col-md-3">
                 <div class="card">
-                    <img src="/img/victoraroni.jpg" class="card-img-top" alt="Victor Aroni">
+                    <img src="/img/victor.jpg" class="card-img-top" alt="Victor Aroni">
                     <div class="card-body">
                         <h5 class="card-title">Victor Aroni</h5>
-                        <p class="card-text">Frontend Developer</p>
+                        <p class="card-text">Mudou de Curso</p>
                     </div>
                 </div>
             </div>
@@ -39,7 +39,7 @@
                     <img src="/img/pedrodigrazia.jpg" class="card-img-top" alt="Pedro Di Grazia">
                     <div class="card-body">
                         <h5 class="card-title">Pedro Di Grazia</h5>
-                        <p class="card-text">Backend Developer</p>
+                        <p class="card-text">Full stack</p>
                     </div>
                 </div>
             </div>
@@ -69,7 +69,17 @@
                     <img src="/img/viniciusborges.jpg" class="card-img-top" alt="Vinicius Borges">
                     <div class="card-body">
                         <h5 class="card-title">Vinicius Borges</h5>
-                        <p class="card-text">Backend Developer</p>
+                        <p class="card-text">Ficou de Boa</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card">
+                    <img src="/img/roque.jpg" class="card-img-top" alt="Roque">
+                    <div class="card-body">
+                        <h5 class="card-title">Felipe Roque</h5>
+                        <p class="card-text">Foi de arrasta pra cima</p>
                     </div>
                 </div>
             </div>

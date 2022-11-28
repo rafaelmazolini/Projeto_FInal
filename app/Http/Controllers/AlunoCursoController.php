@@ -42,6 +42,9 @@ class AlunoCursoController extends Controller
         
         $aluno -> cursos() -> detach($curso);
         
+        $curso -> n_alunos = $curso -> n_alunos - 1;
+        $curso -> save();
+        
         return redirect() -> route('pagina-aluno', $aluno);
     }
     

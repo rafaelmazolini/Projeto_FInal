@@ -70,6 +70,7 @@ class CursoController extends Controller
     
     public function nAprovados($curso){
         $curso = Curso::find($curso);
+        
         $aprovados = count(AlunoCurso::where('curso_id', $curso -> id) -> where('nota', '>=', 5) -> get());
         if($curso -> n_alunos == 0){
             $porcentagem = 0;

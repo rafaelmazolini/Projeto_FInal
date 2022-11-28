@@ -10,7 +10,7 @@
     
     <p>Nome: {{ $aluno -> nome }}</p>
     <p>CPF: {{ $aluno -> cpf }}</p>
-    <p>Endereço: {{ $aluno -> endereço }}</p>
+    <p>Endereço: {{ $aluno -> endereco }}</p>
     <p>Filme favorito: {{ $aluno -> filme }}</p>
     <h4>Informações de Login</h4>
     <p>Usuário: {{ $aluno -> usuario }}</p>
@@ -73,7 +73,7 @@
     
     <p>Nome: {{ $aluno -> nome }}</p>
     <p>CPF: {{ $aluno -> cpf }}</p>
-    <p>Endereço: {{ $aluno -> endereço }}</p>
+    <p>Endereço: {{ $aluno -> endereco }}</p>
     <p>Filme favorito: {{ $aluno -> filme }}</p>
     <h4>Informações de Login</h4>
     <p>Usuário: {{ $aluno -> usuario }}</p>
@@ -108,8 +108,9 @@
   
   @foreach($aluno -> cursos as $matriculado)
   
-    <a href="{{ route('pagina-curso', [$matriculado, 'aluno', 'aluno' => $aluno]) }}">{{ $matriculado -> nome }}</a><br>
-  
+   
+    <a class="btn" href="{{ route('pagina-curso', [$matriculado, 'aluno', 'aluno' => $aluno]) }}">{{ $matriculado -> nome }}</a><br>
+    
   @endforeach
   
   <h2>Cursos Disponíveis</h2>
@@ -134,7 +135,7 @@
     
     <p>{{ $curso -> nome }}</p>
       <form action="{{ route('matricula-aluno', [$aluno, $curso]) }}" method="get">
-        <button>Matricular-se</button>
+        <button class="btn">Matricular-se</button>
       </form>
     
     @endif
@@ -143,7 +144,7 @@
   
   @if($matriculadoAux == 1)
     
-    <p>Nenhum curso disponível.</p>
+    <p>Nenhum curso disponível!</p>
   
   @endif
   

@@ -22,8 +22,8 @@ class SecretariaController extends Controller
         
         //Valida o CPF e o usuário
         foreach(Professor::all() as $professor){
-            if($request -> cpf === $professor -> cpf){
-                return "Erro: professor já cadastrado.";
+            if($request -> cpf == $professor -> cpf){
+                return "Erro: CPF já cadastrado.";
             }
             
             if($request -> usuario === $professor -> usuario){
@@ -64,8 +64,8 @@ class SecretariaController extends Controller
         
         //Valida o CPF e o usuário
         foreach(Aluno::all() as $aluno){
-            if($request -> cpf === $aluno -> cpf){
-                return "Aluno já cadastrado.";
+            if($request -> cpf == $aluno -> cpf){
+                return "Erro: CPF já cadastrado.";
             }
             
             if($request -> usuario === $aluno -> usuario){

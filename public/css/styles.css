@@ -65,13 +65,12 @@ header {
     margin-bottom: 30px;
 }
 
-
 /* navbar */
 
 #navbar {
     justify-content: space-between;
     align-items: center;
-    background-color:#9e9e9e;
+    background-color:#6d6d6d;
 }
 
 .title{
@@ -296,17 +295,4 @@ footer p {
 
 #botao-salvar{
     margin-top: 20px;
-}
-
-/* Search Container */
-
-#search-container {
-
-    background-image: url("../img/banner.jpg");
-    background-size: cover;
-    background-position: center;
-    height: 400px;
-    padding: 50px;
-    text-align: center;
-
 }
