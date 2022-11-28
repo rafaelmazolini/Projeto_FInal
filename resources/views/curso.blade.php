@@ -120,7 +120,7 @@
       <form action="{{ route('desmatricula-aluno', [$aluno, $curso]) }}" method="get">
         {{ csrf_field() }}
         
-        <button>Desmatricular-se</button>
+        <button class="btn">Desmatricular</button>
       </form>
     
   @endif
@@ -139,7 +139,7 @@
       <p>Professor: {{ $curso -> professor -> nome }}</p>
       
       <form action="{{ route('desmatricula-professor', [$curso -> professor, $curso]) }}" method="">
-        <button class="btn-aluno-crud">Parar de ministrar</button>
+        <button class="btn">Parar de ministrar</button>
       </form>
       
       <h3>Alunos Matriculados</h3>
@@ -164,7 +164,7 @@
           <form action="{{ route('atribui-nota', [$aluno, $curso]) }}" method="post">
             {{ csrf_field() }}
             <input type="text" name="nota" placeholder="Atribuir média do aluno">
-            <button class="btn-aluno-crud">Salvar</button>
+            <button class="btn">Salvar</button>
           </form>
         @endif
         
