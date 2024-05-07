@@ -29,33 +29,6 @@
 
     </head>
     <body>
-        <header>
-            <nav class="navber navbar-expand-lg navbar-light">
-            <div class="collapse navbar-collapse" id="navbar"> 
-                <a href="/" class="navbar-brand">
-                    <img src="/img/raspadinhaicon.png" alt="Logo">
-                </a>
-                
-                <h1 class="title">Raspadinha Cursos</h1>
-                
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a href="/" class="nav-link">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('pagina-login') }}" class="nav-link">Login</a>
-                    </li>
-                </ul>
-            </div>
-            </nav>
-        </header>
-        
         @yield('content')
-
-        
-        <footer>
-            <p>Raspadinha Cursos &copy; 2022</p>
-        </footer>
-        <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
     </body>
 </html>

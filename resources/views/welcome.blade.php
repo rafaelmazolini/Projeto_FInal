@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
-@section('title', 'Raspadinha Cursos')
+@section('title', 'Login')
 
 @section ('content')  
-
+    <h1>Welcome</h1>
 @endsection

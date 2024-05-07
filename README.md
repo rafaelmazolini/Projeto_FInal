@@ -1,5 +1,5 @@
 
-# Laravel Template
+# Subir o projeto
 
 ### Passo a passo
 Clone Repositório criado a partir do template, entre na pasta e execute os comandos abaixo:
@@ -49,10 +49,3 @@ Acesse o projeto
 Acesse o phpmyadmin
 [http://localhost:8081](http://localhost:8081)
 
-Equipe:
-Rafael Mazolini - 22007411 
-Matheus Ecke - 22004797 
-Vinicius Godoy - 22006132 
-Victor Aroni - 22000397 
-Pedro Pistarini -22000341 
-Pedro Di Grazia - 22002293
