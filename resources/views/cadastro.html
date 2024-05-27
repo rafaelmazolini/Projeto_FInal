@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body class="bg-gray-100">
+    <section class="flex justify-center items-center h-screen">
+        <div id="app" class="max-w-md w-full bg-white p-8 rounded shadow-md">
+            <h1 class="text-2xl font-semibold text-center mb-6">Cadastre-se</h1>
+            <form @submit.prevent="submitForm">
+                <div class="mb-4">
+                    <label for="nome" class="block text-sm font-medium text-gray-700">Nome</label>
+                    <input v-model="form.nome" id="nome" class="form-input mt-1 block w-full" type="text" placeholder="Informe seu usuário">
+                </div>
+                <div class="mb-4">
+                    <label for="endereco" class="block text-sm font-medium text-gray-700">CEP</label>
+                    <input v-model="form.endereco" id="endereco" class="form-input mt-1 block w-full" type="text" placeholder="Informe seu CEP">
+                </div>
+                <div class="mb-4">
+                    <label for="celular" class="block text-sm font-medium text-gray-700">Numero celular</label>
+                    <input v-model="form.celular" id="celular" class="form-input mt-1 block w-full" type="text" placeholder="Informe seu celular">
+                </div>
+                <div class="mb-4">
+                    <label for="senha" class="block text-sm font-medium text-gray-700">Senha</label>
+                    <input v-model="form.senha" id="senha" class="form-input mt-1 block w-full" type="password" placeholder="Informe sua senha">
+                </div>
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-full w-full mb-4">Cadastrar</button>
+                <p class="text-center text-sm"><a href="/login" class="text-blue-500 hover:underline">Voltar para o Login</a></p>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                form: {
+                    nome: '',
+                    endereco: '',
+                    celular: '',
+                    senha: ''
+                }
+            },
+            methods: {
+                submitForm() {
+                    fetch('http://localhost:3000/cadastro', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(this.form),
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Erro na requisição: ' + response.statusText);
+                        }
+                        return response.json();
+                    })
+                    .catch((error) => {
+                        console.error('Erro:', error);
+                        alert('Ocorreu um erro: ' + error.message);
+                    });
+
+                }
+            }
+        });
+    </script>
+</body>
+</html>

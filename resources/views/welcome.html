@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clínica Mentalis</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Adicione o CSS do Swiper -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <style>
+        /* Adicione isso ao seu arquivo de estilos do Tailwind ou em um estilo embutido */
+        /* Estilizando a barra de rolagem */
+        ::-webkit-scrollbar {
+            width: 8px; /* Largura da barra de rolagem */
+        }
+        
+        /* Estilizando a pista da barra de rolagem */
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; /* Cor de fundo da pista */
+        }
+        
+        /* Estilizando o "polegar" da barra de rolagem */
+        ::-webkit-scrollbar-thumb {
+            background: #888; /* Cor do polegar */
+            border-radius: 4px; /* Raio de borda do polegar */
+        }
+        
+        /* Estilizando o "polegar" da barra de rolagem quando estiver em hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555; /* Cor do polegar quando em hover */
+        }
+        </style>
+</head>
+<body class="bg-gray-100">
+    <div id="app" class="h-screen main-content">
+        <!-- Header -->
+        <header class="bg-gray-900 text-white py-4">
+            <div class="container mx-auto flex justify-between items-center px-4">
+                <h1 class="text-xl font-bold">Clínica Mentalis</h1>
+                <a href="./login">
+                    <img src="https://img.icons8.com/?size=48&id=20749&format=png" 
+                    alt="Ícone de usuário" class="user-icon cursor-pointer ml-auto" @click="showLoginModal = true">
+                </a>
+            </div>
+        </header>
+
+        <div v-if="showLoginModal" class="modal fixed w-full h-full top-0 left-0 flex items-center justify-center bg-black bg-opacity-50">
+            <div class="modal-content bg-white p-8 rounded shadow-md w-1/3">
+                <div class="modal-header flex justify-between items-center pb-4 border-b">
+                    <h5 class="text-xl font-bold">Login / Cadastro</h5>
+                    <button type="button" class="text-gray-500 hover:text-gray-700 focus:outline-none" @click="showLoginModal = false">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form @submit.prevent="login">
+                        <div class="form-group">
+                            <label for="email" class="block mb-2 font-medium">E-mail</label>
+                            <input type="email" class="form-input block w-full mt-2" v-model="loginForm.email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password" class="block mb-2 font-medium">Senha</label>
+                            <input type="password" class="form-input block w-full mt-2" v-model="loginForm.password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-4">Login</button>
+                    </form>
+                    <hr class="my-4">
+                    <p class="text-sm">Ainda não possui uma conta? <a href="/cadastro" class="text-blue-500 hover:underline">Cadastre-se aqui</a>.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Carrossel de Imagens -->
+        <div class="swiper-container image-carousel overflow-x-hidden">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" v-for="(slide, index) in carouselSlides" :key="index">
+                    <img :src="slide.image" class="block w-full h-80 object-cover " :alt="'Slide ' + (index + 1)">
+                </div>
+            </div>
+            <!-- Botões de navegação -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+
+        <!-- Conteúdo -->
+        <div class="flex gap-4 justify-center">
+            <section class="section mt-8 w-1/4 bg-gray-200 rounded-lg p-6 flex flex-col items-center">
+                <h2 class="text-2xl font-semibold mb-4">Descrição dos Serviços</h2>
+                <p class="text-lg text-center">A Clínica Mentalis oferece uma variedade de serviços médicos de alta qualidade, incluindo consultas, exames, cirurgias e tratamentos especializados.</p>
+            </section>
+        
+            <section class="section mt-8 w-1/4 bg-gray-200 rounded-lg p-6 flex flex-col items-center">
+                <h2 class="text-2xl font-semibold mb-4">Sobre a Clínica</h2>
+                <p class="text-lg">A Clínica Mentalis é reconhecida por sua excelência no atendimento médico e pela dedicação em proporcionar cuidados de saúde excepcionais a todos os pacientes.</p>
+            </section>
+        </div>
+        
+        <!-- Carrossel de Depoimentos -->
+        <div class="swiper-container testimonial-carousel mt-8 overflow-x-hidden text-center">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" v-for="(testimonial, index) in testimonials" :key="index">
+                    <p class="text-lg font-medium">{{ testimonial.text }} - {{ testimonial.author }}</p>
+                </div>
+            </div>
+            <!-- Botões de navegação -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+
+        <!-- Formulário de Contato -->
+        <section class="contact-form mt-8 container mx-auto">
+            <h2 class="text-2xl font-semibold mb-4">Formulário de Contato</h2>
+            <form @submit.prevent="submitContactForm">
+                <div class="form-group">
+                    <label for="name" class="block mb-2 font-medium">Nome:</label>
+                    <input type="text" id="name" v-model="contactForm.name" required class="form-input block w-full mb-4">
+                </div>
+                <div class="form-group">
+                    <label for="email" class="block mb-2 font-medium">E-mail:</label>
+                    <input type="email" id="email" v-model="contactForm.email" required class="form-input block w-full mb-4">
+                </div>
+                <button type="submit" class="btn bg-green-500 rounded-full w-28">Enviar</button>
+            </form>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="contact-info bg-gray-900 text-white py-1">
+        <div class="ml-2 mx-auto text-gray-500">
+            <h2 class="text-2xl font-semibold mb-4">Informações de Contato</h2>
+            <p class="text-lg mb-2">Telefone: (19) 99560-1414</p>
+            <p class="text-lg mb-2">E-mail: contato@clinica.Mentalis</p>
+            <p class="text-lg mb-2">Endereço: Rua Mentalis, 123 - Campinas, SP</p>
+            <p class="text-lg">Horário de Funcionamento: Segunda a Sexta, das 8h às 18h</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                carouselSlides: [
+                    { image: 'https://cpage.sfsu.edu/sites/default/files/images/schoolpsych-1920x800.jpg' },
+                    { image: 'https://whitmanjobs.com/wp-content/uploads/2023/07/informational-interview-request-1920x600.jpg' },
+                    { image: 'https://cdn.phenompeople.com/CareerConnectResources/UNHEUS/images/InterviewTips-Hero-1653046719251.jpg' }
+                ],
+                testimonials: [
+                    { text: 'Estou muito satisfeito com o atendimento que recebi na Clínica Mentalis. Os médicos são extremamente competentes e atenciosos.', author: 'João Silva' },
+                    { text: 'Recomendo a Clínica Mentalis a todos que buscam um serviço médico de qualidade e confiança.', author: 'Maria Santos' }
+                ],
+                contactForm: {
+                    name: '',
+                    email: ''
+                }
+            },
+            methods: {
+                submitContactForm() {
+                    console.log('Formulário de contato enviado:', this.contactForm);
+                }
+            },
+            mounted() {
+                // Inicialize o Swiper para os carrosséis
+                new Swiper('.swiper-container', {
+                    navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                    },
+                    autoplay: {
+                        delay: 5000, // 5 segundos
+                    },
+                });
+            }
+        });
+    </script>
+</body>
+</html>

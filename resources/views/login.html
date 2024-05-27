@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <section class="flex justify-center items-center h-screen">
+        <div class="max-w-md w-full bg-white p-8 rounded shadow-md">
+            <h1 class="text-2xl font-semibold text-center mb-6">Login</h1>
+            <form id="loginForm">
+                <div class="mb-4">
+                    <label for="emailInput" class="block text-sm font-medium text-gray-700">E-mail</label>
+                    <input id="emailInput" class="form-input mt-1 block w-full" type="email" placeholder="Informe seu e-mail">
+                </div>
+
+                <div class="mb-4">
+                    <label for="passwordInput" class="block text-sm font-medium text-gray-700">Senha</label>
+                    <input id="passwordInput" class="form-input mt-1 block w-full" type="password" placeholder="Informe sua senha">
+                </div>
+
+                <button id="loginButton" class="bg-blue-500 text-white px-4 py-2 rounded-full w-full mb-4">Entrar</button>
+
+                <p class="text-center text-sm">Não tem uma conta? <a href="/cadastro" class="text-blue-500 hover:underline">Cadastre-se</a></p>
+                <p class="text-center text-sm"><a href="/" class="text-blue-500 hover:underline">Voltar ao Menu </a></p>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        document.getElementById('loginButton').addEventListener('click', function(event) {
+            event.preventDefault();
+            
+            var email = document.getElementById('emailInput').value;
+            var password = document.getElementById('passwordInput').value;
+            
+            fetch('http://localhost:3001/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email: email, password: password }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    window.location.href = './menu.html';
+                } else {
+                    alert('Usuário ou senha incorretos');
+                }
+            })
+            .catch((error) => {
+                console.error('Erro:', error);
+            });
+        });
+    </script>
+</body>
+</html>
